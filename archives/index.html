@@ -26,6 +26,13 @@
 <script src="/js/lib/highlight.js"></script>
 
 
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
 
 
 
@@ -162,12 +169,12 @@
             </div>
         </div>
         
-        <div class="timeline" data-title="">
+        <div class="timeline" data-title="redis常见面试题">
             <div class="timeline-tail"></div>
             <div class="timeline-content">
                 <div class="item-time">2023/7/29</div>
                 <a href="/2023/07/29/redis%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/">
-                    <h3></h3>
+                    <h3>redis常见面试题</h3>
                 </a>
                 <div class="info">
                     
@@ -198,6 +205,12 @@
 </footer>
 
             </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
             
         </div>
         <script src="/js/main.js"></script>
