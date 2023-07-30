@@ -35,6 +35,9 @@
 <script src="/js/lib/preview.js"></script>
 
 
+<script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="/js/lib/crypto.js"></script>
+
 
 
 
@@ -179,111 +182,35 @@
             
             <span class="tag">
                 
-                <a href="/tags/vpn/" style="color: #ff7d73">vpn</a>
+                <a href="/tags/vpn/" style="color: #00a596">vpn</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="color: #ffa2c4">科学上网</a>
+                <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="color: #00a596">科学上网</a>
             </span>
             
         </span>
         
     </div>
     
-    <div class="content" v-pre>
-        <p>芜湖~ 开始起飞🗯️</p>
-<p>首先我们需要先安装 <strong>V2rayN</strong></p>
-<p><strong>V2rayN</strong>下载地址: <a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases">https://github.com/2dust/v2rayN/releases</a></p>
-<p>安装下载V2rayN的过程中, 我们可以悄悄咪咪的去 <strong>cloudflare</strong> 官网注册一个账号(已有账号的就不需要注册了)</p>
-<p><strong>cloudflare</strong>官网:  <a target="_blank" rel="noopener" href="https://www.cloudflare.com/zh-cn/">https://www.cloudflare.com/zh-cn/</a></p>
-<p>这里我用临时邮箱注册    临时邮箱网址: <a target="_blank" rel="noopener" href="https://linshiyouxiang.net/">https://linshiyouxiang.net/</a></p>
-<p>打开临时邮箱网址 复制邮箱地址</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-1.png" class="">
-<p>打开 cloudflare 注册页面 粘贴邮箱地址  输入注册密码 点击注册</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-2.png" class="">
-<p>注册成功会自动跳转到主页 接着我们需要发送邮件验证账号</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-3.png" class="">
-<p>然后来到临时邮箱页面 进行验证</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-4.png" class=""><img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-5.png" class="">
-<p>验证成功后会自动调整到主页</p>
-<p>然后 我们创建worker</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-6.png" class="">
-<p>输入名称 点击部署</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-7.png" class="">
-<p>点击编辑代码</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-8.png" class="">
-<p>接着 我们需要部署代码</p>
-<p>代码网址: <a target="_blank" rel="noopener" href="https://github.com/zizifn/edgetunnel/blob/main/src/worker-vless.js">https://github.com/zizifn/edgetunnel/blob/main/src/worker-vless.js</a></p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-9.png" class="">
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-10.png" class="">
-<p>然后需要修改2处 <code>userID </code> 和 <code>proxyIP </code></p>
-<p><code>userID</code> 使用UUID中任意一个: <a target="_blank" rel="noopener" href="https://1024tools.com/uuid">https://1024tools.com/uuid</a></p>
-<p><code>proxyIP </code> 使用以下任意一个CDN加速:</p>
-<pre><code class="language-[line">cdn-all.xn--b6gac.eu.org
-cdn.xn--b6gac.eu.org 
-cdn-b100.xn--b6gac.eu.org 
-edgetunnel.anycast.eu.org 
-cdn.anycast.eu.org （亚洲地区）
-</code></pre>
-<p>改好后 点击保存并部署</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-11.png" class="">
-<p>接着, 我们 根据 请求接口/UUID 去获取地址</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-12.png" class="">
-<p>比如我的就是: <a target="_blank" rel="noopener" href="https://hello-v2rayn-vpn.ipctr7k.workers.dev/14141a6b-4cde-46a5-9d81-b557b4f7768d">https://hello-v2rayn-vpn.ipctr7k.workers.dev/14141a6b-4cde-46a5-9d81-b557b4f7768d</a></p>
-<p>然后去浏览器访问</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-13.png" class="">
-<p>复制地址后, 我们打开安装好的<strong>V2rayN</strong> 点击 服务器 -&gt; 从剪贴板导入批量URL</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-14.png" class="">
-<p>导入后, 我们进行配置 双击导入的配置, 弹出配置窗口</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-15.png" class="">
-<p>配置前首先先准备works专用优选ip</p>
-<p>works专用优选ip下载地址: <a target="_blank" rel="noopener" href="https://jdssl.top/wp-content/uploads/2023/07/works%E4%B8%93%E7%94%A8ip%E4%BC%98%E9%80%89.zip">https://jdssl.top/wp-content/uploads/2023/07/works专用ip优选.zip</a></p>
-<p>works使用教程: 下载 -&gt; 解压 -&gt; 打开 -&gt; 点击以下五个中任意一个 <span style="color:red;">(ps-注意: 点击前确保所有科学上网关闭, 使用本地网进行打开)</span></p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-17.png" class="">
-<p>这里我点击 jp.bat 等待几分钟后 得到优选ip</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-18.png" class="">
-<p>以下配置是没有域名的, 配置有域名的看后续操作</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-16.png" class="">
-<p>配置好后, 接着我们进行测速</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-19.png" class="">
-<p>得到测试结果, 只要不为-1 就是可以用的, 然后开启代理进行起飞</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-20.png" class="">
-<p>如果你有域名 或者 你想配置有域名的配置 可以阅读接下来的操作</p>
-<p>首先, 我们需要准备一个域名</p>
-<p>免费域名注册网址：</p>
-<p>​	1.<a target="_blank" rel="noopener" href="https://www.dynadot.com/register-your-free-link-domain">https://www.dynadot.com/register-your-free-link-domain</a></p>
-<p>​	2.<a target="_blank" rel="noopener" href="https://nic.eu.org/arf/en/contact/create/">https://nic.eu.org/arf/en/contact/create/</a></p>
-<p>得到域名后, 我们来到 <strong>cloudflare</strong> 网站 输入域名, 点击继续</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-21.png" class="">
-<p>选中free, 点击继续</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-22.png" class="">
-<p>删除所有DNS记录</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-23.png" class="">
-<p>来到这个页面, 将 <strong>cloudflare</strong> 的名称服务器粘贴到注册域名网站DNS设置服务器中(我这里以dynadot网站为例), 然后点击检查名称服务器</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-26.png" class="">
-<p>下图在上图示1-2之间操作</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-27.png" class="">
-<p>等待几分钟 检查服务器完成后会变为有效</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-28.png" class="">
-<p>然后我们来到workers页面</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-24.png" class="">
-<p>点击添加自定义域</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-25.png" class="">
-<p>输入二级域名, 点击添加</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-29.png" class="">
-<p>接着访问接口获取v2ray配置, 接口以填写的 二级域名/userID 组成, 然后复制v2ray配置</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-30.png" class="">
-<p>来到 <strong>V2rayN</strong> 进行有域名的配置</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-31.png" class="">
-<p>配置好后进行测速, 测速没问题就可以开启代理起飞了</p>
-<img src="/2023/07/30/v2rayn-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-32.png" class="">
-<hr/>
-<br/>
-<p>本次教程到这就结束了 ✋</p>
-<p>🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃  END 🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃</p>
-
+    
+    <input
+        id="crypto"
+        :class="['input', cryptoClass]"
+        :disabled="cryptoStatus"
+        ref="crypto"
+        placeholder="文章被加密，请输入密码"
+        data-encrypted="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"
+        data-shasum="b4dfd260ecd2c8fb9ad98120943ace36ddf33f1af1393ea0a5d5163ce267f7e7"
+        v-model="crypto"
+    />
+    <div v-show="!cryptoStatus">
+        请联系作者获取密码
     </div>
+    <transition name="fade">
+        <div class="content" ref="content" v-show="cryptoStatus"></div>
+    </transition>
     
     
     
