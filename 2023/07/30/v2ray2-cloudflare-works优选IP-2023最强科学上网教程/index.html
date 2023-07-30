@@ -1,0 +1,332 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>v2ray2+cloudflare+works优选IP_2023最强科学上网教程~ | coldeyes</title>
+        <meta name="author" content="ce" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/favicon.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>COLDEYES</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;COLDEYES</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                <div class="article">
+    <div>
+        <h1>v2ray2+cloudflare+works优选IP_2023最强科学上网教程~</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/7/30
+        </span>
+        
+        <span class="category">
+            <a href="/categories/tutorial/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                教程
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/vpn/" style="color: #ff7d73">vpn</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="color: #00a596">科学上网</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p>芜湖~ 开始起飞🗯️</p>
+<p>首先我们需要先安装 <strong>V2rayN</strong></p>
+<p><strong>V2rayN</strong>下载地址: <a target="_blank" rel="noopener" href="https://github.com/2dust/v2rayN/releases">https://github.com/2dust/v2rayN/releases</a></p>
+<p>安装下载V2rayN的过程中, 我们可以悄悄咪咪的去 <strong>cloudflare</strong> 官网注册一个账号(已有账号的就不需要注册了)</p>
+<p><strong>cloudflare</strong>官网:  <a target="_blank" rel="noopener" href="https://www.cloudflare.com/zh-cn/">https://www.cloudflare.com/zh-cn/</a></p>
+<p>这里我用临时邮箱注册    临时邮箱网址: <a target="_blank" rel="noopener" href="https://linshiyouxiang.net/">https://linshiyouxiang.net/</a></p>
+<p>打开临时邮箱网址 复制邮箱地址</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-1.png" class="">
+<p>打开 cloudflare 注册页面 粘贴邮箱地址  输入注册密码 点击注册</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-2.png" class="">
+<p>注册成功会自动跳转到主页 接着我们需要发送邮件验证账号</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-3.png" class="">
+<p>然后来到临时邮箱页面 进行验证</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-4.png" class=""><img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-5.png" class="">
+<p>验证成功后会自动调整到主页</p>
+<p>然后 我们创建worker</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-6.png" class="">
+<p>输入名称 点击部署</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-7.png" class="">
+<p>点击编辑代码</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-8.png" class="">
+<p>接着 我们需要部署代码</p>
+<p>代码网址: <a target="_blank" rel="noopener" href="https://github.com/zizifn/edgetunnel/blob/main/src/worker-vless.js">https://github.com/zizifn/edgetunnel/blob/main/src/worker-vless.js</a></p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-9.png" class="">
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-10.png" class="">
+<p>然后需要修改2处 <code>userID </code> 和 <code>proxyIP </code></p>
+<p><code>userID</code> 使用UUID中任意一个: <a target="_blank" rel="noopener" href="https://1024tools.com/uuid">https://1024tools.com/uuid</a></p>
+<p><code>proxyIP </code> 使用以下任意一个CDN加速:</p>
+<pre><code class="language-[line">cdn-all.xn--b6gac.eu.org
+cdn.xn--b6gac.eu.org 
+cdn-b100.xn--b6gac.eu.org 
+edgetunnel.anycast.eu.org 
+cdn.anycast.eu.org （亚洲地区）
+</code></pre>
+<p>改好后 点击保存并部署</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-11.png" class="">
+<p>接着, 我们 根据 请求接口/UUID 去获取地址</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-12.png" class="">
+<p>比如我的就是: <a target="_blank" rel="noopener" href="https://hello-v2rayn-vpn.ipctr7k.workers.dev/14141a6b-4cde-46a5-9d81-b557b4f7768d">https://hello-v2rayn-vpn.ipctr7k.workers.dev/14141a6b-4cde-46a5-9d81-b557b4f7768d</a></p>
+<p>然后去浏览器访问</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-13.png" class="">
+<p>复制地址后, 我们打开安装好的<strong>V2rayN</strong> 点击 服务器 -&gt; 从剪贴板导入批量URL</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-14.png" class="">
+<p>导入后, 我们进行配置 双击导入的配置, 弹出配置窗口</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-15.png" class="">
+<p>配置前首先先准备works专用优选ip</p>
+<p>works专用优选ip下载地址: <a target="_blank" rel="noopener" href="https://jdssl.top/wp-content/uploads/2023/07/works%E4%B8%93%E7%94%A8ip%E4%BC%98%E9%80%89.zip">https://jdssl.top/wp-content/uploads/2023/07/works专用ip优选.zip</a></p>
+<p>works使用教程: 下载 -&gt; 解压 -&gt; 打开 -&gt; 点击以下五个中任意一个 <span style="color:red;">(ps-注意: 点击前确保所有科学上网关闭, 使用本地网进行打开)</span></p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-17.png" class="">
+<p>这里我点击 jp.bat 等待几分钟后 得到优选ip</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-18.png" class="">
+<p>以下配置是没有域名的, 配置有域名的看后续操作</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-16.png" class="">
+<p>配置好后, 接着我们进行测速</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-19.png" class="">
+<p>得到测试结果, 只要不为-1 就是可以用的, 然后开启代理进行起飞</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-20.png" class="">
+<p>如果你有域名 或者 你想配置有域名的配置 可以阅读接下来的操作</p>
+<p>首先, 我们需要准备一个域名</p>
+<p>免费域名注册网址：</p>
+<p>​	1.<a target="_blank" rel="noopener" href="https://www.dynadot.com/register-your-free-link-domain">https://www.dynadot.com/register-your-free-link-domain</a></p>
+<p>​	2.<a target="_blank" rel="noopener" href="https://nic.eu.org/arf/en/contact/create/">https://nic.eu.org/arf/en/contact/create/</a></p>
+<p>得到域名后, 我们来到 <strong>cloudflare</strong> 网站 输入域名, 点击继续</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-21.png" class="">
+<p>选中free, 点击继续</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-22.png" class="">
+<p>删除所有DNS记录</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-23.png" class="">
+<p>来到这个页面, 将 <strong>cloudflare</strong> 的名称服务器粘贴到注册域名网站DNS设置服务器中(我这里以dynadot网站为例), 然后点击检查名称服务器</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-26.png" class="">
+<p>下图在上图示1-2之间操作</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-27.png" class="">
+<p>等待几分钟 检查服务器完成后会变为有效</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-28.png" class="">
+<p>然后我们来到workers页面</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-24.png" class="">
+<p>点击添加自定义域</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-25.png" class="">
+<p>输入二级域名, 点击添加</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-29.png" class="">
+<p>接着访问接口获取v2ray配置, 接口以填写的 二级域名/userID 组成, 然后复制v2ray配置</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-30.png" class="">
+<p>来到 <strong>V2rayN</strong> 进行有域名的配置</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-31.png" class="">
+<p>配置好后进行测速, 测速没问题就可以开启代理起飞了</p>
+<img src="/2023/07/30/v2ray2-cloudflare-works%E4%BC%98%E9%80%89IP-2023%E6%9C%80%E5%BC%BA%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E6%95%99%E7%A8%8B/image-32.png" class="">
+<hr/>
+<br/>
+<p>本次教程到这就结束了 ✋</p>
+<p>🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃  END 🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃🎃</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2020 - 2023 coldeyes
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;ce
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+
+        
+    </body>
+</html>
