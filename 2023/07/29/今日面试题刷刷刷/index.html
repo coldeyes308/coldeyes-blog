@@ -35,6 +35,9 @@
 <script src="/js/lib/preview.js"></script>
 
 
+<script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="/js/lib/crypto.js"></script>
+
 
 
 
@@ -179,49 +182,30 @@
             
             <span class="tag">
                 
-                <a href="/tags/java/" style="color: #ff7d73">java</a>
+                <a href="/tags/java/" style="color: #03a9f4">java</a>
             </span>
             
         </span>
         
     </div>
     
-    <div class="content" v-pre>
-        <h4 id="第一题">第一题</h4>
-<p>美团追魂七连问:</p>
-<p>关于 Object o = new Object()</p>
-<ol>
-<li>
-<p>请解释一下对象的创建过程?(半初始化)</p>
-</li>
-<li>
-<p>加问DCL要不要加volatile问题?(指令重排)</p>
-</li>
-<li>
-<p>对象在内存中的存储布局?(对象与数组的存储不同)</p>
-</li>
-<li>
-<p>对象头具体包括什么?(markword klasspointer)</p>
-</li>
-<li>
-<p>对象怎么定位?(直接 间接)</p>
-</li>
-<li>
-<p>对象怎么分配?(栈上-线程本地-Eden-Old)</p>
-</li>
-<li>
-<p>Object o = new Object()在内存中占用多少字节?</p>
-<p>synchronized锁信息</p>
-</li>
-<li>
-<p><span style="color:red;">新问题: 为什么hotspot不使用c++对象来代表java对象?</span></p>
-</li>
-<li>
-<p><span style="color: red;">新问题: Class对象是在堆还是在方法区?</span></p>
-</li>
-</ol>
-
+    
+    <input
+        id="crypto"
+        :class="['input', cryptoClass]"
+        :disabled="cryptoStatus"
+        ref="crypto"
+        placeholder="文章被加密，请输入密码"
+        data-encrypted="U2FsdGVkX18x+HPxxBAqUWDw8E8xAlsYN3zPHGTQZIQ70FN1TjbaCvtFBpfEUeaun7G0ttbXKRdKbBZj+wA5yVnA2DoLhLT6vh9AG7fgei8kQoo4cRTZ9+pD2pkP2g0qGN9KxyUBx/k2eCfdC+exoWikxuA9DWm8lwXWWWlnbnVJptQqJgT4hfTkEHtu2/Z8kTkIJ7XLxcjbUiOfYD9S21DdPMOUGV++7/mvs0kXyWgW7tDvGh/V3S+Ve/ZlR0fG4IYjgAYAEk8YYgahDzuQt/DypxaW/aq0v9GQdoTi9+ZtKG3IhEYhZsiWkikqu8zLoTZEL44qCklj+9zs6dQoEXaDLY4GQnPdY7mlb164S7uWrQdklEflyPcOqZSlKwPYlYSFJpF/Iafz8ovnFBknXrEE0niKEdAOyMKPQLzKYFPANWUzEWv09vo37TZgDiBq6Fmi35zjja+InDfqQM0q0ucFLDZkilfeGAbt6UPW5cGGyzqeQeP7uFXMSLIQm5kwcE2aqXRzzFX1ajspAYGaYwRMBC/uMM87EY4ZDWXumiMdwRdEDNPv+KY4ufmN9YQf/4TBpQPD3wNKDtXFmXEZ4ZcruXjlnC8HLyrqF7+QpdLH7oVkt44SXVC5bMh10HxgHwBwWYVRlGAk4Fj1o2Pd8AsieDns2juD8PfPjPxeyakjCq/qO2eqgMlX3CoFYJHL5eM2YdUG/VwpppuTsfDJ4cgdayvpisSwUgyGA8BiOPnsl0w7cgD5Frn6lRtj7EGQHQVfZd3FuY1yKGINBMou/YFiZA5z258YfFZOvNHY/ULvp1BhMe50nEM0NNmc2ZQRX1sMTUwj8WlBVCTdWzVMlyNFEjiS9IQv0lQfbl0heEV/77WASybWuhK6peQVdPYmHykJ3bapjPEisAr/bw/Z/WwFTSYaHGTuZQw3LQ0OGxvRPvQsrPPgeGsobwl3GGSndSf6cBGLM0/n3WEKnhGi2B6096DxOTS56EH5w0WRpwRcsQb3C4jsJkS/J6CEB5oBBi0DVbJp8GR10Wgb9sXeSezcvG4rLLHlvwRo3/LG/sy5xk5fIaSo8xhRCvqwb1GkSRl41yWV7hOm2tTyxiDAEsNbMx58Lc6qEVW+7NGw+PDWrCSmmpYDevhYW5XK/iJpdbm8nAR8FX0H6fP8S6Umhw=="
+        data-shasum="f513b7f3ba4692f3d35382eca45abbfcab1cda34915a890fff9e6c8466ae3a4b"
+        v-model="crypto"
+    />
+    <div v-show="!cryptoStatus">
+        请联系作者获取密码
     </div>
+    <transition name="fade">
+        <div class="content" ref="content" v-show="cryptoStatus"></div>
+    </transition>
     
     
     

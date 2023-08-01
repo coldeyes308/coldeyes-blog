@@ -1,0 +1,299 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>15天面试冲击刷刷刷_day1~ | coldeyes</title>
+        <meta name="author" content="ce" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/favicon.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>COLDEYES</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;COLDEYES</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                <div class="article">
+    <div>
+        <h1>15天面试冲击刷刷刷_day1~</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/7/30
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                面试题
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/java/" style="color: #03a9f4">java</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" style="color: #03a9f4">并发编程</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <h2 id="第一题-并发编程的三大特性">第一题: 并发编程的三大特性</h2>
+<h3 id="一-原子性">一.原子性</h3>
+<h4 id="1-1-什么是并发编程的原子性"><em><strong>1.1 什么是并发编程的原子性</strong></em></h4>
+<p>​		JMM(Java Memory Mode)。不同的硬件和不同的操作系统在内存上的操作有一定差异的。Java为了解决相同代码在不同操作系统上出现的各种问题，JMM屏蔽掉各种硬件和操作系统带来的差异。</p>
+<p>让Java的并发编程可以做到跨平台。</p>
+<p>JMM规定所有变量都会存储到主内存中，在操作的时候，需要从主内存中复制一份到线程内存(CPU内存)，在线程内部做计算，<strong>然后再写回主内存(不一定！)</strong></p>
+<p><span style="color:red;"><strong>原子性的定义: 原子性指一个操作是不可分割的，不可中断的，一个线程在执行时，另一个线程不会影响到它</strong></span></p>
+<h4 id="1-2-保证并发编程的原子性"><em><strong>1.2 保证并发编程的原子性</strong></em></h4>
+<h5 id="1-2-1-synchronized">1.2.1 synchronized</h5>
+<p>​				可以在方法上追加synchronized关键字或者采用同步代码块的形式来保证原子性</p>
+<h5 id="1-2-2-CAS">1.2.2 CAS</h5>
+<p>​				CAS(compare and swap): 也就是比较和交换, 它是一条CPU的并发原语。</p>
+<p>​				它在替换内存的某个位置的值时，首先查看内存中的值与预期的值是否一致，如果一致，执行替换操作。这个操作是一个原子性操作。</p>
+<p>​				Java中基于Unsafe的类提供了对CAS的操作的方法，JVM会帮助我们将方法实现CAS汇编指令</p>
+<h5 id="1-2-3-Lock锁">1.2.3 Lock锁</h5>
+<p>​				Lock锁是在JDK1.5由Doug Lea研发的，它的性能相比synchronized在JDK1.5的时期，性能好了很多，但是在JDK1.6对sychronized优化之后，性能相差不大，但是如果涉及并发比较多，推荐ReentrantLock锁，性能会更好</p>
+<h5 id="1-2-4-ThreadLocal">1.2.4 ThreadLocal</h5>
+<p>​				ThreadLocal保证原子性的方式，是不让多线程去操作临界资源，让每个线程去操作属于自己的数据</p>
+<h3 id="二-可见性">二.可见性</h3>
+<h4 id="2-1-什么是可见性">2.1 什么是可见性</h4>
+<p>​		可见性问题是基于CPU位置出现的, CPU处理速度非常快，相对CPU来说，去主内存获取数据这个事情太慢了，CPU就提供了L1, L2, L3的三级缓存，每次去主内存拿完数据后，就会存储到CPU的三级缓存，每次去三级缓存拿数据，效率肯定会提升。</p>
+<p>​		这就带来了问题，现在CPU都是多核，每个线程的工作内存(CPU三级缓存)都是独立的，会告知每个线程中做修改时，只改自己的工作内存，没有及时的同步到主内存中，导致数据不一致问题</p>
+<h4 id="2-2-解决可见性的方式">2.2 解决可见性的方式</h4>
+<h5 id="2-2-1-volatile">2.2.1 volatile</h5>
+<p>​			volatile是一个java关键字，用来修饰成员变量。</p>
+<p>​			如果属性被volatile修饰，相当于会告诉CPU，对当前属性的操作，不允许使用CPU的缓存，必须去和主内存操作</p>
+<h5 id="2-2-2-synchronized">2.2.2 synchronized</h5>
+<p>​			如果涉及到了synchronized的同步代码块或者同步方法，获取锁资源后，将内部涉及到的变量从CPU缓存中移除，必须去主内存中重新拿数据，而且在释放锁之后，会立即将CPU缓存中的数据同步到主内存。</p>
+<h5 id="2-2-3-Lock">2.2.3 Lock</h5>
+<p>​			Lock锁是基于volatile实现的。Lock锁内部再进行加锁和释放锁时，会对一个由volatile修饰的state属性进行加减操作。</p>
+<h5 id="2-2-4-final">2.2.4 final</h5>
+<p>​			final修饰的属性，在运行期间是不允许修改的，这样一来，就间接的保证了可见性，所有多线程读取final属性，值都是一样的</p>
+<h3 id="三-有序性">三.有序性</h3>
+<h4 id="3-1-什么是有序性">3.1 什么是有序性</h4>
+<p>​		在Java中，.java文件中的内容会被编译，在执行前需要再次转为CPU可以识别的指令，CPU在执行这些指令时，为了提升执行效率，在不影响最终结果的前提下(满足一些要求)，会对指令进行重排</p>
+<p>​		指令乱序执行的原因，是为了尽可能的发挥CPU的性能。</p>
+<p>​		Java中的程序是乱序执行的。</p>
+<h4 id="3-2-as-if-serial">3.2 as-if-serial</h4>
+<h4 id="3-3-happens-before">3.3 happens-before</h4>
+<h4 id="3-4-volatile">3.4 volatile</h4>
+<p>​		如果需要让程序对某一个属性的操作不出现指令重排，除了满足happens-before的原则之外，还可以基于volatile修饰属性，从而对这个属性的操作，就不会出现指令重排的问题了。</p>
+<h2 id="第二题-什么是CAS-有什么优缺点？">第二题 : 什么是CAS? 有什么优缺点？</h2>
+<p>CAS(compare and swap): 也就是比较和交换, 它是一条CPU的并发原语。</p>
+<p>它在替换内存的某个位置的值时，首先查看内存中的值与预期的值是否一致，如果一致，执行替换操作。这个操作是一个原子性操作。</p>
+<p>优点：相对于传统的synchronized，它可以避免线程的挂起和唤醒造成的用户态和内核态切换而带来的时间成本</p>
+<p>缺点: 自旋时间过长</p>
+<h2 id="第三题-Java中的四种引用类型">第三题: Java中的四种引用类型</h2>
+<p>Java中的使用引用类型分别是: 强，软，弱，虚</p>
+<p>在Java中最常见的就是强引用，把一个对象赋给一个引用变量，这个引用变量就是一个强引用。当一个对象被强引用变量引用时，它始终处于可达状态，它是不可能被垃圾回收机制回收的，即使该对象以后永远都不会被用到，JVM也不会回收。因此强引用是造成Java内存泄漏的主要原因之一。</p>
+<p>其次是软引用，对于只有软引用的对象来说，当系统内存足够时它不会被回收，当系统内存空间不足时它会被回收。软引用通常用在对内存敏感的程序中，作为缓存使用。</p>
+<p>然后是弱引用，它比软引用的生存期更短，对于只有弱引用的对象来说，只要垃圾回收机制一运行，不管JVM的内存空间是否足够，总会回收该对象占用的内存，可以解决内存泄漏问题，ThreadLocal就是基于弱引用解决内存泄漏的问题。</p>
+<p>最后是虚引用，它不能单独使用，必须和引用队列联合使用，虚引用的主要作用是跟踪对象被垃圾回收的状态。</p>
+<h2 id="第四题-ThreadLocal的内存泄漏问题？">第四题: ThreadLocal的内存泄漏问题？</h2>
+<p>如果ThreadLocal引用丢失，key因为弱引用会被GC回收掉，如果同时线程还没有别回收，就会导致内存泄漏，内存中的value无法被回收，同时也无法被获取到。</p>
+<p>只需要在使用完毕ThreadLocal对象之后，及时的调用remove方法，移除Entry即可</p>
+<h2 id="第五题-synchronized的实现原理">第五题: synchronized的实现原理?</h2>
+<p>synchronized是基于对象实现的。</p>
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2020 - 2023 coldeyes
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;ce
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+
+
+
+
+        
+    </body>
+</html>

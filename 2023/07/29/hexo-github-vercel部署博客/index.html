@@ -35,6 +35,9 @@
 <script src="/js/lib/preview.js"></script>
 
 
+<script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
+<script src="/js/lib/crypto.js"></script>
+
 
 
 
@@ -184,43 +187,35 @@
             
             <span class="tag">
                 
-                <a href="/tags/github/" style="color: #ffa2c4">github</a>
+                <a href="/tags/github/" style="color: #ff7d73">github</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/vercelsh/" style="color: #00bcd4">vercelsh</a>
+                <a href="/tags/vercelsh/" style="color: #ff7d73">vercelsh</a>
             </span>
             
         </span>
         
     </div>
     
-    <div class="content" v-pre>
-        <h3 id="Hexo">Hexo</h3>
-<p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/index.html">Hexo</a>: 一个快速, 简洁且高效的博客框架</p>
-<p>因为 <strong>Hexo</strong> 是基于 Node 的, 所以要想使用 <strong>Hexo</strong> 就需要按照 Node.js</p>
-<p>Node.js下载地址: <a target="_blank" rel="noopener" href="https://nodejs.org/en">https://nodejs.org/en</a></p>
-<p>安装好Node.js后 打开cmd命令行窗口输入以下命令:</p>
-<pre><code class="language-[node.js]">输入: node -v
-输出: 	-&gt; v18.17.0
-输入: npm -v
-输出: 	-&gt; 9.6.7
-</code></pre>
-<p>如果没有报错, 输出版本号后就说明 Node.js 安装好了, 接下啦, 我们就可以愉快的安装 <strong>Hexo</strong> 了!</p>
-<p>首先, 如果没有科学上网, 我们需要换一下国内源, 不然下载很慢</p>
-<p>在命令行中执行:</p>
-<p><code>npm config set registry https://registry.npm.taobao.org</code></p>
-<p>之后, 我们进行安装 <strong>Hexo</strong> 脚手架</p>
-<p><code>npm install hexo-cli -g</code></p>
-<p>如果出现Hexo的相关信息则说明Hexo安装成功</p>
-<p>接下来创建一个存放博客的文件夹, 顺序执行以下命令:</p>
-<pre><code class="language-[node.js]">hexo init blog
-cd blog
-npm install
-</code></pre>
-
+    
+    <input
+        id="crypto"
+        :class="['input', cryptoClass]"
+        :disabled="cryptoStatus"
+        ref="crypto"
+        placeholder="文章被加密，请输入密码"
+        data-encrypted="U2FsdGVkX18TH9GHxi0VUPvpUbR2XtnscxQvprErZlfOfXfzvvcipR4/AkxDbRHzsuuUshZBuovtjszCDOx9DQGHsQxbsqNVHjJJtwZkCJuzUmpSyka2jygbxlrxxHiqqUbfbkNV6Ay7iKMQqlLUJMzbaeP6b0GZ6rsN6mV2EXIkz+V4mDTIZfhWLSnsbJPVxS+1kCi++nllbc55K2YzQtk0WhV8VOgOpVq2GzZXvwQhr6UtV4RvdU+5L0f/UirqqD0rXc33JPzXSGGoKNJDtUyIVgtlPVK+oP7twujXejep37AQAiMKBJgGygr+Y0qG/FdrfwNQM60yXssv9BN1Ze5lzG3pQqWE7XLNmm+R3nZH29OGYBIurX6OdcFtVqeUcJeXEcreoq16Wpy1+Y5T7SBhHxgL8vC7dlfK79cszLSkIWkmMiXVkv0plzh2SEN0F6ne7M+9NCX5FjxZnznAYF+6bSAwPFEGJtThb0hZkpb5ILvtiuB+K2kPlh5JDxHHIfVlhlXQ9PHyGya+23HSUJrvQoy/VojUKUUNaCcLNwkR13u5MiFjnAswKQuM+0zEsL7xHZ/dT7kpMERdMvyFn4fzCP2mdMmJzTrTpku7mczwQgyztdiYoLVbt9TLD0RFALg/e+W/9A62S8xqgpDmsmd4LzOBIbCmaZv0tpS3KvCkzP3j5Sz4+5Z+4t+gLLzzR6NfdJ8lp8KpHmRBfh76BJwi+zr7roXuJBadL21FNLYPuKIIMSEJonysiZeM8sC5rQUaP0nxK2bW+WX2pv4QEaHNwOCcq6Xxj3aIrKkeCNyKdgdy+vaDuAe0zRuiDmEhEIyfdls01vovcjmrv8A7lNTEdxc2EXkU0aC8AjeG+gLIPJrPTZ6+lBOvVv/98EWf1vrE9zm3blEZg842Jr4Si/qjWOI12jNkD2UZGfcUb+yP9fc/ZfeJZHTaTe1BIgm7GRDQpLb4bjQevTsZ5DY4nXrZv3cziZjahNCdatpicNyd0aU4NCRS6rGvBSfo9tWy0MYeeC2cqJaIk4mqMGoq+d+Ml+hFYggV2xsuqfAiMy9+w9XdxHEN0NIDqcKkY9GX0Mq5CWvQbqag5NtovKpOXVlJwRPY27nfUY0UwsyV98pT9Fc8c/GhnaDgDTMrMKeMDBkEY8NFNsL+CTvS4g2UM2iNfOwGDAIJJPkYuNRhLVIGhZi5awt2iGrgEcgrswR2594Hx13dhXaWyyfDN76/p4uQ5KWhjgXPgAQyMdOduA4k69CyI9r5xh2bFbpcH9bLTcEbfPGVjWO7H7s0pNjx/5L4JnwIBLvIVIHjCH8ynfIpT+49ukRS+P2OUjlXe7wa5/RICEcfViKQBU2jo9tkJzIZDKI9kPzo2HdyVwilUjeqeGz0SwmRIAVCJtB8TfKa9KmHjkm9JPAXc02qcYT8jn1dMOv5WasccCjW+3SU93gzxzptQz1+uCdUD106dxvH9kGQGGk9WyxGEXyZcF3AU6u7H7lamyfVJRfruwkU/iCnaOa4vohsokVZhw00xtkqQjc2L7hLGmnx1uT1Y99BC1OTIJSGZWjaOmwbwMfzjtE0VkKbaZEw+OKjeMCR0s+igo/W1DjSpbUwGaOIIFhstvBBWOStAHxnLSyyCq97V27TFyNhCl95yaTfESdyKbAS"
+        data-shasum="2fe58bac9c9745dcd8029be793866701f2b1d7d174aa4a661fd5f7ea165bcd2e"
+        v-model="crypto"
+    />
+    <div v-show="!cryptoStatus">
+        请联系作者获取密码
     </div>
+    <transition name="fade">
+        <div class="content" ref="content" v-show="cryptoStatus"></div>
+    </transition>
     
     
     
