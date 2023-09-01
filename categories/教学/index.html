@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="utf-8" />
-        <title>hexo+github+vercel部署博客 | coldeyes</title>
+        <title>Categories: 教学 | coldeyes</title>
         <meta name="author" content="ce" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
@@ -33,13 +33,6 @@
 
 
 <script src="/js/lib/preview.js"></script>
-
-
-<script src="https://cdn.staticfile.org/crypto-js/4.1.1/crypto-js.min.js"></script>
-<script src="/js/lib/crypto.js"></script>
-
-
-
 
 
 
@@ -153,20 +146,37 @@
 </transition>
 
             <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
-                <div class="article">
-    <div>
-        <h1>hexo+github+vercel部署博客</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/7/29
+                <div id="archives">
+    
+    <div class="categories-tags">
+        
+        
+        <span>
+            <a href="/categories/%E6%95%99%E5%AD%A6/" style="background: linear-gradient(120deg, #9abbf7 0%, #ffbbf4 100%)">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                教学
+            </a>
         </span>
         
-        <span class="category">
-            <a href="/categories/tutorial/">
+        
+        
+        
+        
+        <span>
+            <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" style="background: #ff7d73">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                面试题
+            </a>
+        </span>
+        
+        
+        
+        <span>
+            <a href="/categories/tutorial/" style="background: #ff7d73">
                 <span class="icon">
                     <i class="fa-solid fa-bookmark fa-fw"></i>
                 </span>
@@ -175,53 +185,64 @@
         </span>
         
         
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/github/" style="color: #ff7d73">github</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/hexo/" style="color: #ffa2c4">hexo</a>
-            </span>
-            
-            <span class="tag">
-                
-                <a href="/tags/vercelsh/" style="color: #ff7d73">vercelsh</a>
-            </span>
-            
+        
+        <span>
+            <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                操作系统
+            </a>
         </span>
+        
+        
+        
+        <span>
+            <a href="/categories/20%E5%B0%8F%E6%97%B6%E5%BF%AB%E9%80%9F%E6%8E%8C%E6%8F%A1%E8%8B%B1%E8%AF%AD%E6%A0%B8%E5%BF%83%E7%A7%98%E6%B3%95/" style="background: #03a9f4">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                20小时快速掌握英语核心秘法
+            </a>
+        </span>
+        
         
     </div>
     
-    
-    <input
-        id="crypto"
-        :class="['input', cryptoClass]"
-        :disabled="cryptoStatus"
-        ref="crypto"
-        placeholder="文章被加密，请输入密码"
-        data-encrypted="U2FsdGVkX18jLKl1P8U4RlnyVDMS/ue/4kPihTqhErxAY8DpgV7b4JXHL8MUjXN1j5hVWtRy9FRq3Cypy+wogiChlMOVbsSQ18wzMsBW+KbWF+wyEhQukEa2R7TjUopwI6BvxSw/TuagBEfNH6CbmTcNNX1BM7411Id3CBCc9djmbGHa5hWhHj1qghAjdJN3CLyUn3dbB5Yiyca8Uhktphn0t7LORt27WXt9RBCC5IUS+zIjP6hgHTdCaZeDbvUOkIgEkyZHd8r2zZqVjI9Syq3FPgLODM3l4wCSvM1vNBtYfOEhFL/bp0xM2zEjwrs+t7QkSNGdyXFqEg3quELrl0Bsip8W/GUn8dsFQaeM7iRjhWSFVGctF+cRRYRx3m7W852GP/rqZcSEWK7Qm5SajPraOGBUyI7oB9EXibSnmIlXs2BsHUd6/K3UO9PMXX3YqKYCpBso/XWhUjUyTV3GyBbFC8kox7sBQNUfjjFCFnvsnBO2zX/hGQo7EtDn6XysaLVmXN0VGy5oHpOZN78tgXnbhsFuAfyQ5x5jtx9Lmv37OMhNtpSbeGF4GR1+xK4W0gNmK8EUG0YwpYg6kBRd8IAX1FmpOHVBfB87/M06vz0bQJhFCI/J38ODR4K0+Nd/uW1RLwnFCKR9GU2Nesu5kIBoK7u+ASRpRmGCSQXaw3th0L/oAxO2lgKiNVV9tyuikNP95yMgK4rDaLVBs81DurELCFhqBXJQovEQ7vXoaZ1JPda7r53ti6UaY+FLBI6ufC3eMyNv1D9W0gL2UPB7QCLkRFkFOHulkHibEwAxxecHI2O2zfDC6Xt6wR3/DmsMht4jwitreQXv/NG8FkqS6V+zOjZJvKDRtcdBO/UfJlw27WdgfBHilp4IO9Xtb3jWhcggxK7qKTOF4UXv2AsteMp8Z66Y1796F1hFnn/I/oGpgHhTwLGakMhqOIIiA1WaYDjLYgGgiAvETABt5Aq8KBQyAh8jSkZsuRyn15nX7DL0/10pIHeyh156mWqjLxQi6Kk3DbOISogGLwu+tOvjMINKmD5LgogDTxwtwhhNGZv5gJLA0SIzobmbJgQVb+i3B/Zy8ohR+6Q19/D01/0MsPfeJv7sossACOZhq3rVsjLzc2ozz2gL4zUE4tmG/Y0KMrWFlnJxN41feYCknnfGur+F9ftlo+mGEVaoQr+gVNjT14jRb9tcb+lLkecwSwMyA1XR0CUXJbbaSrPFn41dpzY+ezxz9m4zj09FaN74L1Ee1t4vGiYw9JbSGhpGQb8vLKA4cLDeQyZnWZUoXTqRBRTIpFlqWoxiSLTakOHRyBJ8PbIMtpr9ZLKhdF0KOSGBKL+2dOmlSiiinVYTb3c8qAReq8r/OMiEIzsyxcDwXJXXCeCmYpb9weRx+6HbreJsRxiPw3Wd/DVXvY2s4o58cwyHPseNcxI/zYYTTetC96hx61ru70kToffCNzQmRdpohB3Gjgc2jQNHcWwtMjRrGfK8+7FhmODMvT+nbeCszCU0luoqHB2ze02qqFUFfGIrcm/PPPDEggp31ltohM2OZ2fXNMm6jJvVc/0966Ieax+Px8Mze321pVhnFbPrgMT9Cbee57NtG3f1T/KBKVx2GbgjCjMEsvreHFudx2GOy2Qh3We/VGBZTQKxhRtrKc+q"
-        data-shasum="2fe58bac9c9745dcd8029be793866701f2b1d7d174aa4a661fd5f7ea165bcd2e"
-        v-model="crypto"
-    />
-    <div v-show="!cryptoStatus">
-        请联系作者获取密码
+    <div class="timeline">
+        <div class="timeline-tail"></div>
+        <div class="timeline-content">
+            <div class="item-time">2023/9/1</div>
+            <a href="/2023/09/01/Github%E9%85%8D%E7%BD%AEssh-key%E6%AD%A5%E9%AA%A4/">
+                <h3>Github配置ssh key步骤</h3>
+            </a>
+            <div class="info">
+                
+                <span class="category">
+                    <a href="/categories/%E6%95%99%E5%AD%A6/">
+                        <span class="icon">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </span>
+                        教学
+                    </a>
+                </span>
+                
+                
+                <span class="tags">
+                    <span class="icon">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </span>
+                    
+                    <span class="tag">
+                        
+                        <a href="/tags/github/" style="color: #03a9f4">github</a>
+                    </span>
+                    
+                </span>
+                
+            </div>
+        </div>
     </div>
-    <transition name="fade">
-        <div class="content" ref="content" v-show="cryptoStatus"></div>
-    </transition>
-    
-    
-    
-    
-    
-    
     
 </div>
 
@@ -253,12 +274,6 @@
             
         </div>
         <script src="/js/main.js"></script>
-        
-        
-
-
-
-
         
     </body>
 </html>
