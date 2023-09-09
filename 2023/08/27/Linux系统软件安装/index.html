@@ -722,6 +722,16 @@ root@DESKTOP-Q89USRE:~# which mysql_secure_installation
 </li>
 </ol>
 <p>至此，在Ubuntu上安装MySQL5.7版本成功。</p>
+<p>tip:</p>
+<blockquote>
+<p>设置远程连接</p>
+<p>1.编辑配置： vim /etc/mysql/mysql.conf.d/mysqld.cnf</p>
+<p>​					-》 注释bind-address</p>
+<p>2.进入mysql环境: mysql -u root -p ‘密码’</p>
+<p>​								-》查看你要登录的用户中mysql库里的user表中的host字段是否是 % 号， 如果是localhost, 改为%号</p>
+<p>​								-》update user set host=‘%’ where user=‘你要远程登陆的用户名’</p>
+<p>​								-》刷新权限: flush privileges;</p>
+</blockquote>
 <h1>Tomcat安装部署【简单】</h1>
 <h2 id="简介-v2">简介</h2>
 <p>Tomcat 是由 Apache 开发的一个 Servlet 容器，实现了对 Servlet 和 JSP 的支持，并提供了作为Web服务器的一些特有功能，如Tomcat管理和控制平台、安全域管理和Tomcat阀等。</p>
@@ -2646,6 +2656,10 @@ systemctl enable grafana-server
     
     
     
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
     
     
     
@@ -2681,6 +2695,23 @@ systemctl enable grafana-server
         <script src="/js/main.js"></script>
         
         
+<script
+    src="https://giscus.app/client.js"
+    data-repo="coldeyes308/coldeyes-blog"
+    data-repo-id="R_kgDOKA_thA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKA_thM4CZMGy"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
 
 
 
