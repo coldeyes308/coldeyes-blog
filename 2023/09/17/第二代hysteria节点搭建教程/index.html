@@ -1,0 +1,456 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>第二代hysteria节点搭建教程 | coldeyes</title>
+        <meta name="author" content="ce" />
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <link rel="icon" href="/images/favicon.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.3.4/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.4.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.8.0/highlight.min.js"></script>
+<script src="https://cdn.staticfile.org/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.8.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.js"></script>
+<script src="https://cdn.staticfile.org/KaTeX/0.16.8/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/KaTeX/0.16.8/katex.min.css" />
+<script src="/js/lib/math.js"></script>
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+                <div id="loading" v-show="loading">
+                    <div id="loading-circle">
+                        <h2>LOADING</h2>
+                        <p>加载过慢请开启缓存 浏览器默认开启</p>
+                        <img src="/images/loading.gif" />
+                    </div>
+                </div>
+            </transition>
+            <div id="menu" :class="{ hidden: hiddenMenu, 'menu-color': menuColor}">
+    <nav id="desktop-menu">
+        <a class="title" href="/">
+            <span>COLDEYES</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </nav>
+    <nav id="mobile-menu">
+        <div class="title" @click="showMenuItems = !showMenuItems">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;COLDEYES</span>
+        </div>
+        <transition name="slide">
+            <div class="items" v-show="showMenuItems">
+                
+                <a href="/">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-house fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                    </div>
+                </a>
+                
+                <a href="/about">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-id-card fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                    </div>
+                </a>
+                
+                <a href="/archives">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-box-archive fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                    </div>
+                </a>
+                
+                <a href="/categories">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-bookmark fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                    </div>
+                </a>
+                
+                <a href="/tags">
+                    <div class="item">
+                        <div style="min-width: 20px; max-width: 50px; width: 10%">
+                            <i class="fa-solid fa-tags fa-fw"></i>
+                        </div>
+                        <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                    </div>
+                </a>
+                
+            </div>
+        </transition>
+    </nav>
+</div>
+<transition name="fade">
+    <div id="menu-curtain" @click="showMenuItems = !showMenuItems" v-show="showMenuItems"></div>
+</transition>
+
+            <div id="main" :class="loading ? 'into-enter-from': 'into-enter-active'">
+                <div class="article">
+    <div>
+        <h1>第二代hysteria节点搭建教程</h1>
+    </div>
+    <div class="info">
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/9/17
+        </span>
+        
+        <span class="category">
+            <a href="/categories/%E6%95%99%E5%AD%A6/">
+                <span class="icon">
+                    <i class="fa-solid fa-bookmark fa-fw"></i>
+                </span>
+                教学
+            </a>
+        </span>
+        
+        
+        <span class="tags">
+            <span class="icon">
+                <i class="fa-solid fa-tags fa-fw"></i>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/" style="color: #03a9f4">科学上网</a>
+            </span>
+            
+            <span class="tag">
+                
+                <a href="/tags/vps/" style="color: #00a596">vps</a>
+            </span>
+            
+        </span>
+        
+    </div>
+    
+    <div class="content" v-pre>
+        <p><strong>前言:</strong></p>
+<blockquote>
+<p>歇斯底里(hysteria)是底层传输基于udp的加密代理协议，对比目前使用的ss、vmess、vless、trojan等协议，歇斯底里在绕过防火墙审查的同时还能大幅提升上网速度，这是因为歇斯底里修改了quic的拥塞控制算法。让我们在配置文件中手动设置发送速率和接收速率，如果链路发生了拥堵，其他quic用户的拥塞控制是bbr或者cubic，会主动降低发送速率，而歇斯底里用的 拥塞控制算法不管网络是否拥堵，始终按照我们在配置中设定的速率收发数据，当别人降速避让的时候，我们全速发送，在尽力而为的交付规则下，这样能抢占更多的带宽，实现网络提速，这就是歇斯底里能大幅提升网速的原因。</p>
+</blockquote>
+<p><strong>相关链接:</strong></p>
+<p>v2rayN 下载：<a target="_blank" rel="noopener" href="https://bulianglin.com/g/aHR0cHM6Ly9naXRodWIuY29tLzJkdXN0L3YycmF5Ti9yZWxlYXNlcy9sYXRlc3Q">https://github.com/2dust/v2rayN/releases/latest</a><br>
+Hysteria 2下载：<a target="_blank" rel="noopener" href="https://bulianglin.com/g/aHR0cHM6Ly9naXRodWIuY29tL2FwZXJuZXQvaHlzdGVyaWEvcmVsZWFzZXM">https://github.com/apernet/hysteria/releases</a><br>
+Hysteria 2文档：<a target="_blank" rel="noopener" href="https://bulianglin.com/g/aHR0cHM6Ly92Mi5oeXN0ZXJpYS5uZXR3b3JrL3poLw">https://v2.hysteria.network/zh/</a></p>
+<p>sing-box文档：<a target="_blank" rel="noopener" href="https://bulianglin.com/g/aHR0cHM6Ly9zaW5nLWJveC5zYWdlcm5ldC5vcmcvemgv">https://sing-box.sagernet.org/zh/</a><br>
+Android客户端（SFA）：<a target="_blank" rel="noopener" href="https://bulianglin.com/g/aHR0cHM6Ly9pbnN0YWxsLmFwcGNlbnRlci5tcy91c2Vycy9uZWtvaGFzZWthaS9hcHBzL3NmYS9kaXN0cmlidXRpb25fZ3JvdXBzL3B1YmxpY3Rlc3Q">https://install.appcenter.ms/users/nekohasekai/apps/sfa/distribution_groups/publictest</a><br>
+IOS客户端（TestFlight）：<a target="_blank" rel="noopener" href="https://bulianglin.com/g/aHR0cHM6Ly90ZXN0ZmxpZ2h0LmFwcGxlLmNvbS9qb2luL0FjcU80NEZI">https://testflight.apple.com/join/AcqO44FH</a> （1.5.0 beta版支持Hysteria 2）<br>
+IOS客户端（AppStore）：<a target="_blank" rel="noopener" href="https://bulianglin.com/g/aHR0cHM6Ly9hcHBzLmFwcGxlLmNvbS91cy9hcHAvc2luZy1ib3gvaWQ2NDUxMjcyNjcz">https://apps.apple.com/us/app/sing-box/id6451272673</a> （暂不支持Hysteria 2）</p>
+<p><strong>服务器相关指令:</strong></p>
+<pre><code class="language-linux">#一键安装Hysteria2
+bash &lt;(curl -fsSL https://get.hy2.sh/)
+	
+#生成自签证书
+openssl req -x509 -nodes -newkey ec:&lt;(openssl ecparam -name prime256v1) -keyout /etc/hysteria/server.key -out /etc/hysteria/server.crt -subj &quot;/CN=bing.com&quot; -days 36500 &amp;&amp; sudo chown hysteria /etc/hysteria/server.key &amp;&amp; sudo chown hysteria /etc/hysteria/server.crt
+
+#启动Hysteria2
+systemctl start hysteria-server.service
+#重启Hysteria2
+systemctl restart hysteria-server.service
+#查看Hysteria2状态
+systemctl status hysteria-server.service
+#停止Hysteria2
+systemctl stop hysteria-server.service
+#设置开机自启
+systemctl enable hysteria-server.service
+#查看日志
+journalctl -u hysteria-server.service
+</code></pre>
+<p><strong>服务器配置文件:</strong></p>
+<pre><code class="language-linux">cat &lt;&lt; EOF &gt; /etc/hysteria/config.yaml
+listen: :443 #监听端口
+
+#使用CA证书
+#acme:
+#  domains:
+#    - a.com #你的域名，需要先解析到服务器ip
+#  email: test@sharklasers.com
+
+#使用自签证书
+#tls:
+#  cert: /etc/hysteria/server.crt
+#  key: /etc/hysteria/server.key
+
+auth:
+  type: password
+  password: 123456 #设置认证密码
+  
+masquerade:
+  type: proxy
+  proxy:
+    url: https://bing.com #伪装网址
+    rewriteHost: true
+EOF
+</code></pre>
+<p>客户端配置文件:</p>
+<pre><code class="language-txt">server: ip:443
+auth: 123456
+
+bandwidth:
+  up: 20 mbps
+  down: 100 mbps
+  
+tls:
+  sni: a.com
+  insecure: false #使用自签时需要改成true
+
+socks5:
+  listen: 127.0.0.1:1080
+http:
+  listen: 127.0.0.1:8080
+</code></pre>
+<p>步骤:</p>
+<ol>
+<li>
+<p>打开我们的vps，输入一键安装</p>
+<pre><code class="language-linux">bash &lt;(curl -fsSL https://get.hy2.sh/)
+</code></pre>
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/1.png" class="">
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/2.png" class="">
+</li>
+<li>
+<p>在vps里生成自签证书</p>
+<pre><code class="language-linux">openssl req -x509 -nodes -newkey ec:&lt;(openssl ecparam -name prime256v1) -keyout /etc/hysteria/server.key -out /etc/hysteria/server.crt -subj &quot;/CN=bing.com&quot; -days 36500 &amp;&amp; sudo chown hysteria /etc/hysteria/server.key &amp;&amp; sudo chown hysteria /etc/hysteria/server.crt
+</code></pre>
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/3.png" class="">
+</li>
+<li>
+<p>设置配置文件, 有域名使用CA证书, 没有域名使用自签证书</p>
+<p>有域名的CA证书配置:</p>
+<pre><code class="language-linux">cat &lt;&lt; EOF &gt; /etc/hysteria/config.yaml
+listen: :443 #监听端口
+
+#使用CA证书
+acme:
+  domains:
+    - coldeyes.pp.ua #你的域名，需要先解析到服务器ip
+  email: coldeyesce@gmail.com  #可以填写你自己的邮箱
+
+auth:
+  type: password
+  password: 123456 #设置认证密码
+  
+masquerade:
+  type: proxy
+  proxy:
+    url: https://bing.com #伪装网址
+    rewriteHost: true
+EOF
+</code></pre>
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/4.png" class="">
+<p>没有域名的自签证书配置:</p>
+<pre><code class="language-linux">cat &lt;&lt; EOF &gt; /etc/hysteria/config.yaml
+listen: :443 #监听端口
+
+#使用自签证书
+tls:
+  cert: /etc/hysteria/server.crt
+  key: /etc/hysteria/server.key
+
+auth:
+  type: password
+  password: 123456 #设置认证密码
+  
+masquerade:
+  type: proxy
+  proxy:
+    url: https://bing.com #伪装网址
+    rewriteHost: true
+EOF
+</code></pre>
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/8.png" class="">
+</li>
+<li>
+<p>启动服务</p>
+<p>先查看歇斯底里2启动状态</p>
+<blockquote>
+<p>systemctl status hysteria-server.service</p>
+</blockquote>
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/5.png" class="">
+<p>没启动的话，启动歇斯底里2</p>
+<blockquote>
+<p>#启动Hysteria2<br>
+systemctl start hysteria-server.service<br>
+#重启Hysteria2<br>
+systemctl restart hysteria-server.service</p>
+</blockquote>
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/6.png" class="">
+<p>启动好了后，不一定可以使用，因为没有出现 server up and runing的提示, 可以等待一下，重新查看启动状态</p>
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/7.png" class="">
+<p>如果重新查看状态发现启动失败，大概率是没有放行端口，歇斯底里2需要放行配置443端口和80端口，或者关闭防火墙后重新启动歇斯底里2</p>
+<blockquote>
+<p>查看端口</p>
+<p>ufw status</p>
+<p>关闭防火墙</p>
+<p>ufw disable</p>
+</blockquote>
+<p>如果还是失败，且没有域名，可以使用自签证书，修改配置文件记得重启歇斯底里2</p>
+</li>
+<li>
+<p>客户端配置</p>
+<p>下载v2rayn</p>
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/9.png" class="">
+<p>下载Hysteria 2</p>
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/10.png" class="">
+<p>解压下载好的v2rayn压缩包，找到Hysteria目录将下载好的Hysteria 2执行文件替换掉v2rayn里的</p>
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/11.png" class="">
+<p>新建一个文本文件，将客户端配置文件粘贴进去</p>
+<pre><code class="language-txt">server: ip:443 #ip改为你自己的vpsip
+auth: 123456 #密码和vps配置的认证密码一致
+
+bandwidth:  #上传和下载速度 不清楚可以关闭代理去测速网站(比如speedtest.cn)测试一下
+  up: 32 mbps
+  down: 85 mbps
+  
+tls:
+  sni: coldeyes.pp.ua  # vps配置的是CA证书使用配置的域名，使用的自签证书，使用配置的伪装域名，并且下面设置为true
+  insecure: false #使用自签时需要改成true
+
+socks5:
+  listen: 127.0.0.1:1080
+http:
+  listen: 127.0.0.1:8080
+</code></pre>
+<p>打开v2rayn,新建一个自定义服务器，并且配置</p>
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/12.png" class="">
+<img src="/2023/09/17/%E7%AC%AC%E4%BA%8C%E4%BB%A3hysteria%E8%8A%82%E7%82%B9%E6%90%AD%E5%BB%BA%E6%95%99%E7%A8%8B/13.png" class="">
+<p>接着就测试看能不能科学上网了</p>
+</li>
+</ol>
+
+    </div>
+    
+    
+    
+    
+    <div id="comment">
+        <div id="giscus-container" class="giscus"></div>
+    </div>
+    
+    
+    
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2020 - 2023 coldeyes
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;ce
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/theme-particlex/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            
+            <transition name="fade">
+                <div id="preview" ref="preview" v-show="previewShow">
+                    <img id="preview-content" ref="previewContent" />
+                </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+        
+<script
+    src="https://giscus.app/client.js"
+    data-repo="coldeyes308/coldeyes-blog"
+    data-repo-id="R_kgDOKA_thA"
+    data-category="Announcements"
+    data-category-id="DIC_kwDOKA_thM4CZMGy"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="preferred_color_scheme"
+    data-lang="zh-CN"
+    crossorigin
+    async
+></script>
+
+
+
+
+
+        
+    </body>
+</html>
