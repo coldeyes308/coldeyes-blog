@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no">
+    <meta name="referrer" content="origin">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <title>
+        
+            redis常见面试题
+        
+    </title>
+    <link rel="shortcut icon" href="#"/>
+
+    <link type="text/css" rel="stylesheet" href="/font/LongCang.css">
+    <link type="text/css" rel="stylesheet" href="/font/Monda.css">
+    <link type="text/css" rel="stylesheet" href="/font/NotoSansSC.css">
+    <link type="text/css" rel="stylesheet" href="/font/NotoSerifSC.css">
+    <link type="text/css" rel="stylesheet" href="/font/Playball.css">
+    <link type="text/css" rel="stylesheet" href="/font/PTMono.css">
+    <link type="text/css" rel="stylesheet" href="/font/Roboto.css">
+    <link type="text/css" rel="stylesheet" href="/font/RobotoSlab.css">
+    <link type="text/css" rel="stylesheet" href="/font/Rosario.css">
+    <link type="text/css" rel="stylesheet" href="/font/UbuntuMono.css">
+
+    <link type="text/css" rel="stylesheet" href="/css/base.css">
+    <link type="text/css" rel="stylesheet" href="/css/code.css">
+
+    <script type="text/javascript" src="/js/jquery-3.4.1.min.js"></script>
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="coldeyes" type="application/atom+xml">
+</head>
+<body>
+    <a id="cover"></a>
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
+<div id="header" class="header">
+    <div class="vertical">
+        <div class="inner">
+            
+                <h1 class="header-subtitle">redis常见面试题</h1>
+                <div class="header-subinfo">
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2023-07-29
+                        </span>
+                        
+                            
+                                <span>
+                                    <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/article/2777124110/"></span>
+                                </span>
+                            
+                            
+                                <span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/article/2777124110/"></span>
+                                </span>
+                              
+                        
+                    </p>
+                    
+                        
+                            <span class="category-color">面试题</span>
+                        
+                    
+                    
+                        
+                            <span class="tag-color">redis</span>
+                        
+                    
+                </div>
+            
+        </div>
+    </div>
+    
+</div>
+<div id="container">
+    
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <p>Redis使用场景: 缓存, 分布式锁, 计数器, 保存Token, 消息队列, 延迟队列</p>
+<h3 id="一-使用场景">一.使用场景</h3>
+<ol>
+<li>
+<h4 id="Redis的数据持久化策略有哪些"><em><strong>Redis的数据持久化策略有哪些?</strong></em></h4>
+<p>在Redis中提供了2种数据持久化的方式: <code>RDB</code>, <code>AOF</code></p>
+<p><code>RDB</code>: 全称Redis Database Backup file(Redis数据备份文件), 也被叫做Redis数据快照。简单来说就是把内存中的所有数据都记录到磁盘中。当Redis实例故障重启后, 从磁盘读取快照文件, 恢复数据</p>
+<p><strong>命令</strong>:</p>
+<p><code>save</code> -&gt; 由Redis主进程来执行RDB,会阻塞所有命令</p>
+<p><code>bgsave</code> -&gt; 开启子进程执行RDB,避免主进程受到影响</p>
+<p><strong>内部触发RDB机制,在redis.conf文件中找到</strong>:</p>
+<p>save 900 1 -&gt; 900秒内, 如果至少1个key被修改, 执行bgsave</p>
+<p>save 300 10</p>
+<p>save 60 10000</p>
+<p><strong>RDB的执行原理?</strong></p>
+<p>bgsave开始时会fork主进程得到子进程,子进程共享主进程的内存数据,完成fork后读取内存数据并写入RDB文件</p>
+<p>fork采用的是copy-on-write技术:</p>
+<pre><code> 当主进程执行读操作时,访问共享内存
+ 
+ 当主进程执行写操作时,则会拷贝一份数据,执行写操作
+</code></pre>
+<p><code>AOF</code>: 全称Append Only File(追加文件)。Redis处理的每一个命令都会记录在AOF文件, 可以看作时命令日志文件。</p>
+<img src="/article/2777124110/redis-1-2.png" class="">
+<p><strong>参考回答</strong>:</p>
+<img src="/article/2777124110/redis-1.png" class="">
+</li>
+<li>
+<h4 id="什么是缓存穿透-怎么解决">什么是缓存穿透, 怎么解决</h4>
+<p><strong><code>缓存穿透</code></strong>: 是指查询一个一定不存在的数据, 这样就不会写入缓存, 每次都会去数据库中查询, 可能会造成数据库宕掉, 一般这种情况是受到了攻击。</p>
+<p><strong><code>解决</code></strong>:</p>
+<ol>
+<li>
+<p><em>缓存空数据</em> : 即使查询一个不存在的数据, 任然把它写入到缓存中</p>
+<blockquote>
+<p>优点: 简单</p>
+<p>缺点: 消耗内存, 可能会发生不一致的情况</p>
+</blockquote>
+</li>
+<li>
+<p><em>使用布隆过滤器</em> :  再缓存预热时, 预热布隆过滤器, 查询时先查询布隆过滤器, 存在就查缓存, 不存在就直接返回</p>
+<blockquote>
+<p>优点: 内存占用较小, 没有多余的key</p>
+<p>缺点: 实现复杂, 存在误判</p>
+</blockquote>
+</li>
+</ol>
+<p><strong><code>参考回答</code></strong> :</p>
+<img src="/article/2777124110/redis-2.png" class="">
+</li>
+<li>
+<h4 id="什么是布隆过滤器">什么是布隆过滤器?</h4>
+<p>主要用于检索一个元素是否在一个集合中</p>
+</li>
+<li>
+<h4 id="什么是缓存击穿-怎么解决">什么是缓存击穿,怎么解决?</h4>
+<p><strong><code>缓存击穿</code></strong>: 给某一个key设置了过期时间, 当这个key过期时, 恰好这个时间点对这个key有大量的请求并发过来, 这些并发请求可能瞬间把数据库垮掉</p>
+<p><strong><code>解决</code></strong>:</p>
+<ol>
+<li>
+<p><em>互斥锁</em></p>
+<blockquote>
+<p>优点: 强一致</p>
+<p>缺点: 性能差</p>
+</blockquote>
+</li>
+<li>
+<p><em>逻辑过期</em></p>
+<blockquote>
+<p>优点: 高可用, 性能优</p>
+<p>缺点: 不能保证数据绝对一致</p>
+</blockquote>
+<img src="/article/2777124110/redis-4.png" class="">
+</li>
+</ol>
+</li>
+<li>
+<h4 id="什么是缓存雪崩-怎么解决">什么是缓存雪崩,怎么解决?</h4>
+<p><strong><code>缓存雪崩</code></strong>: 当同一时间段有大量的key过期或者Redis宕机, 这段时间有大量的请求过来, 导致大量请求访问数据库, 带来巨大压力</p>
+<p><strong><code>解决</code></strong>:</p>
+<ol>
+<li>给不同的key的TTL(过期时间)添加随机值</li>
+<li>利用Redis集群提高服务的可用性</li>
+<li>给缓存业务添加降级限流策略</li>
+<li>给业务添加多级缓存</li>
+</ol>
+<p><strong><code>参考回答</code></strong>:</p>
+<img src="/article/2777124110/redis-5.png" class="">
+</li>
+<li>
+<h4 id="Redis双写问题">Redis双写问题?</h4>
+<blockquote>
+<p>问题: redis作为缓存, mysql的数据如何与redis进行同步呢?(双写一致性)</p>
+<p>对于这个问题首先根据自己的项目实际用到redis的项目功能进行回答</p>
+<p>如:</p>
+<ol>
+<li>我们当是是把文章的热点数据存入到了缓存中,虽然是热点数据,但是实时要求性并没有那么高,所以当时我们采用的是异步的方案同步的数据</li>
+<li>我们当时是把抢卷的库存存入到了缓存中,这个需要实时的进行同步数据,为了保证数据的强一致,我们当时采用的是redission提供的读写锁来保证数据的同步</li>
+</ol>
+<p>参考回答:</p>
+ <img src="/article/2777124110/redis-6.png" class="">   
+</blockquote>
+</li>
+<li>
+<h4 id="Redis分布式锁如何实现">Redis分布式锁如何实现?</h4>
+<p>Redis实现分布式锁主要利用Redis的setnx命令</p>
+<p>获取锁: <code>SET lock value NX EX 10</code> 添加锁, NX是互斥, EX是设置超时时间</p>
+<p>释放锁: <code>DEL key</code></p>
+</li>
+<li>
+<h4 id="Redis实现分布式锁如何合理的控制锁的有效时长">Redis实现分布式锁如何合理的控制锁的有效时长?</h4>
+<p>根据业务执行时间预估  给锁续期</p>
+</li>
+<li>
+<h4 id="Redis的数据过期策略有哪些">Redis的数据过期策略有哪些?</h4>
+<p>面试问: 假如redis的key过期之后, 会立即删除吗?</p>
+<p>Redis对数据设置数据的有效时间, 数据过期以后, 就需要将数据从内存中删除掉, 可以按照不同的规则进行删除, 这种删除规则就被称之为数据的删除策略(数据过期策略)</p>
+<p>数据删除策略-惰性删除</p>
+<p>设置该key过期时间后, 我们不去管它, 当需要该key时, 我们在检查其是否过期, 如果过期, 我们就删掉它, 反之返回该key</p>
+<p>优点: 对CPU友好, 只会在使用该key时才会进行过期检查, 对于很多用不到的key不用浪费时间进行过期检查</p>
+<p>缺点: 对内存不友好, 如果一个key已经过期, 但是一直没有使用, 那么该key就会一直存在内存中, 内存永远不会释放</p>
+<p>数据删除策略-定期删除</p>
+<p>每隔一段时间, 我们就对一些key进行检查, 删除里面过期的key(从一定数量的数据库中提取一定数量的随机key进行检查, 并删除其中的过期key)</p>
+<p>定期清理有两种模式:</p>
+<pre><code> SLOW模式是定时任务, 执行频率默认为10hz, 每次不超过25ms, 以通过修改配置文件redis.conf的hz选项来调整这个次数
+
+ FAST模式执行频率不固定, 但两次间隔不低于2ms, 每次耗时不超过1ms
+</code></pre>
+<p>优点: 可以通过限制删除操作执行的时长和频率来减少删除操作对CPU的影响。另外定期删除,也能有效释放过期键占用的内存。</p>
+<p>缺点: 难以确定删除操作执行的时长和效率</p>
+<p><strong>参考回答</strong>:</p>
+<img src="/article/2777124110/redis-9.png" class="">           
+</li>
+<li>
+<h4 id="Redis的数据淘汰策略有哪些">Redis的数据淘汰策略有哪些?</h4>
+<p>面试问: 假如缓存过多, 内存是有限的, 内存被占满了怎么办?</p>
+<pre><code>当Redis中内存不够用时, 此时在向Redis中添加新的key, 那么Redis就会按照某一种规则将内存中的数据删除掉, 这种数据的删除规则被称之为内存的淘汰策略。
+</code></pre>
+<p>Redis支持8种不同策略来选择要删除的key:</p>
+<pre><code>noeviction: 不淘汰任何key, 但是内存满时不允许写入新数据, 默认就是这种策略。
+
+volatile-ttl: 对设置了TTL的key, 比较key的剩余TTL值, TTL越小越先被淘汰
+
+allkeys-random: 对全体key, 随机进行淘汰。
+
+volatile-random: 对设置了TTL的key, 随机进行淘汰。
+
+allkeys-lru: 对全体的key, 基于LRU算法进行淘汰。
+
+volatile-lru: 对设置了TTL的key, 基于LRU算法进行淘汰。
+
+allkeys-lfu: 对全体的key, 基于LFU算法进行淘汰。
+
+volatile-lfu: 对设置了TTL的key, 基于LFU算法进行淘汰。
+</code></pre>
+<p>关于数据淘汰策略其他面试问题</p>
+<ol>
+<li>
+<p>数据库有1000万条数据, Redis只能缓存20w数据, 如何保证Redis种的数据都是热点数据?</p>
+<p>使用allkeys-lru(挑选最近最少使用的数据淘汰)淘汰策略, 留下来的都是经常访问的热点数据</p>
+</li>
+<li>
+<p>Redis的内存用完了会发生什么?</p>
+<p>主要看淘汰策略是什么?如果是默认的配置(noeviction), 会直接报错</p>
+</li>
+</ol>
+<p><strong>参考回答</strong>:</p>
+<img src="/article/2777124110/redis-10.png" class="">
+</li>
+</ol>
+<h3 id="二-其它面试题">二.其它面试题</h3>
+<ol>
+<li>Redis集群有哪些方案?</li>
+<li>什么是Redis主从同步</li>
+<li>你们使用Redis是单点还是集群?那种集群?</li>
+<li>Redis分片集群中数据是怎么存储和读取的?</li>
+<li>Redis集群脑裂</li>
+<li>怎么保证Redis的高并发可用？</li>
+<li>你们用过Redis的事务吗?事务的命令有哪些?</li>
+<li>Redis是单线程的, 但是为什么还那么快?</li>
+</ol>
+<!-- more !-->
+
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/image/sidebar/avatar.jpg" alt="Coldeyes">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>Coldeyes
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/article/2777124110/" target="_blank">redis常见面试题</a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>0 和 1 是我的语言，代码世界是我的乐园。
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                    <div class="category">
+                        分类：
+                        
+                            <a href="/category/%E9%9D%A2%E8%AF%95%E9%A2%98/">面试题</a>
+                        
+                    </div>
+                
+                
+                    <div class="tag">
+                        标签：
+                        
+                            <a href="/tag/redis/">redis</a>
+                        
+                    </div>
+                
+                <div class="article-prev-next">
+                    
+                        <a href="/article/3372545924/" class="prev-prefix">« </a> 上一篇：    <a href="/article/3372545924/" title="发布于 2023-07-29 06:16">hexo+github+vercel部署博客</a>
+                        <br>
+                    
+                    
+                </div>
+            </div>
+            
+    <div class="article-comments">
+        
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="/css/waline.css"/>
+        <link rel="stylesheet" href="/css/waline-custom.css"/>
+        <!-- 脚本文件 -->
+        <script type="module">
+            import { init } from "/js/waline.mjs";
+
+            const WalineInstance = init({
+                el              : ".comments-content",
+                serverURL       : "https://waline-comments-kfugp5gol-coldeyes308.vercel.app/",
+                path            : window.location.pathname,
+                meta            : ['nick', 'mail', 'link'],
+                requiredMeta    : ['nick', 'mail'],
+                pageSize        : 10,
+                lang            : "zh-cn",
+                locale: {
+                    admin       : "博主",
+                    anonymous   : "匿名用户",
+                    sofa        : "快来做第一个评论的人吧 ~",
+                    placeholder : "你是我一生只会遇见一次的惊喜...",
+                },
+                dark            : "html[color-scheme='dark']",
+                search          : false,
+                pageview        : true,
+                comment         : true,
+                copyright       : false,
+            });
+
+            // Waline 输入框选中动画
+            $(document).on("focus", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color-focus)");
+            });
+
+            $(document).on("blur", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color)");
+            });
+        </script>
+    
+ 
+        </div>
+    
+</div>
+    <div id="footer">
+    <div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【星光闪烁梦幻境<span><i class='iconfont icon-like-fill'></i></span>科技韵律绘未来】</div><div>&copy; 2020-2023 Coldeyes. All Rights Reserved.</div>
+</div>
+    <div id="sidebar">
+    <div class="menu-wrap" style="display:none;">
+        
+            <div class="menu-notice">
+                <span class="iconfont icon-notice"></span>
+                <div class="notice">
+                    <span>简单地活着，肆意而又精彩！</span>
+                </div>
+            </div>
+        
+        <nav class="menu">
+            <div class="menu-introduce"> 
+                <div class="introduce-avatar">
+                    <img src="/image/sidebar/avatar.jpg">
+                </div> 
+                <div class="introduce-info"> 
+                    <div class="introduce-user">
+                        
+                            <a href="https://www.coldeyes.link" target="_blank"><span>Coldeyes</span></a>
+                        
+                    </div>
+                </div> 
+            </div> 
+            <div class="menu-list">
+                <ul>
+                    
+                        <li class=""><a href="/" class="" target="_self"><span class="iconfont icon-home-fill"></span>首页</a></li>
+                    
+                        <li class=""><a href="/category" class="" target="_self"><span class="iconfont icon-folder-fill"></span>分类</a></li>
+                    
+                        <li class=""><a href="/tag" class="" target="_self"><span class="iconfont icon-discount-fill"></span>标签</a></li>
+                    
+                        <li class=""><a href="/archive" class="" target="_self"><span class="iconfont icon-calendar-fill"></span>归档</a></li>
+                    
+                        <li class=""><a href="/donate" class="" target="_self"><span class="iconfont icon-heart-fill"></span>赞赏</a></li>
+                    
+                        <li class=""><a href="/about" class="" target="_self"><span class="iconfont icon-about-fill"></span>关于</a></li>
+                    
+                        <li class=""><a href="/atom.xml" class="" target="_blank"><span class="iconfont icon-rss"></span>订阅</a></li>
+                    
+                        <li class=""><a href="javascript:;" class="search" target="_self"><span class="iconfont icon-search-menu"></span>搜索</a></li>
+                    
+                        <li class=""><a href="/comment" class="" target="_self"><span class="iconfont icon-comments-fill"></span>留言板</a></li>
+                    
+                        <li class=""><a href="/friend" class="" target="_self"><span class="iconfont icon-link"></span>友情链接</a></li>
+                    
+                </ul> 
+            </div> 
+            <div class="menu-link">
+                <div class="box">
+                    <div class="image-box"></div>
+                </div>
+                
+                    <a name="QQ" href="https://wpa.qq.com/msgrd?v=3&uin=1553037531&site=qq&menu=yes&jumpflag=1" class="image" target="_blank" data="/image/sidebar/qq.jpg"><span class="iconfont icon-qq"></span></a>
+                
+                    <a name="twitter" href="https://twitter.com/coldeyes308" class="" target="_blank" data=""><span class="iconfont icon-twitter"></span></a>
+                
+                    <a name="GitHub" href="https://github.com/coldeyes308" class="" target="_blank" data=""><span class="iconfont icon-github"></span></a>
+                
+            </div> 
+        </nav>
+        <button class="menu-button-close"></button>
+        <div class="morph-shape" id="morph-shape" data-morph-open="M-7.312,0H15c0,0,66,113.339,66,399.5C81,664.006,15,800,15,800H-7.312V0z;M-7.312,0H100c0,0,0,113.839,0,400c0,264.506,0,400,0,400H-7.312V0z">
+            <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 100 800" preserveAspectRatio="none">
+                <path d="M-7.312,0H0c0,0,0,113.839,0,400c0,264.506,0,400,0,400h-7.312V0z"/>
+            </svg>
+        </div>
+    </div>
+    <button class="menu-button-open">MENU</button>
+    <div class="menu-cover"></div>
+</div>
+    <link type="text/css" rel="stylesheet" href="/css/search.css">
+<script type="text/javascript" src="/js/iscroll.js"></script>
+<script type="text/javascript" src="/js/instantsearch.min.js"></script>
+<div class="search-window">
+    <div class="search-content">
+        <div class="search-content-icon">
+            <i class="iconfont icon-search"></i>
+        </div>
+        <div id="search-input" class="search-input"></div>
+    </div>
+
+    <div class="search-scroll">
+        <div class="search-result">
+            <div id="search-stats" class="search-stats"></div>
+            <div id="search-hits"></div>
+            <div id="search-pagination" class="search-pagination"></div>
+        </div>
+    </div>
+
+    <span class="search-close-icon">
+        <i class="iconfont icon-close"></i>
+    </span>
+</div>
+    <div id="tools">
+    <div class="progressbar-top"></div>
+    
+    <link type="text/css" rel="stylesheet" href="/css/APlayer.css">
+    <script type="text/javascript" src="/js/APlayer.min.js"></script>
+    <script type="text/javascript" src="/js/Meting.min.js"></script>
+    <script>
+        var meting_api = 'https://api.i-meto.com/meting/api?server=:server&type=:type&id=:id&auth=:auth&r=:r';
+    </script>
+    <meting-js id="3778678" lrcshow="false" server="netease" type="playlist" fixed="true" autoplay="false" loop="all" order="random" preload="auto" volume="0.67" mutex="true"></meting-js>
+
+    <div class="wrap-right">
+    <div class="wrap-right-hide">
+         <div class="wrap-right-button favorites">
+            <div class="iconbox" switch="false">
+                <span class="iconfont icon-favorites"></span>
+            </div>
+            <span class="icontext">关注</span>
+         </div>
+        <div class="wrap-right-button search">
+            <div class="iconbox">
+                <span class="iconfont icon-search-menu"></span>
+            </div>
+            <span class="icontext">搜索</span>
+        </div>
+        <div class="wrap-right-button menu-button">
+            <div class="iconbox">
+                <span class="iconfont icon-menu"></span>
+            </div>
+            <span class="icontext">菜单</span>
+        </div>
+        <div class="wrap-right-button mode">
+            <div class="light">
+                <div class="iconbox">
+                    <span class="iconfont icon-daymode"></span>
+                </div>
+                <span class="icontext">浅色模式</span>
+            </div>
+            <div class="dark">
+                <div class="iconbox">
+                    <span class="iconfont icon-nightmode-fill"></span>
+                </div>
+                <span class="icontext">深色模式</span>
+            </div>
+        </div>
+        <div class="wrap-right-button bottom">
+            <div class="iconbox">
+                <span class="iconfont icon-top"></span>
+            </div>
+            <span class="icontext">跳至底部</span>
+        </div>
+    </div>
+    <div class="wrap-right-show">
+        <div class="wrap-right-button set">
+            <div class="iconbox">
+                <span class="iconfont icon-setting"></span>
+            </div>
+            <span class="icontext">设置</span>
+        </div>
+        <div class="wrap-right-button top">
+            <div class="iconbox">
+                <span class="iconfont icon-top"></span>
+            </div>
+            <span class="icontext">返回顶部</span>
+        </div>
+    </div>
+</div>
+    <div class="loading"></div>
+</div>
+    <script>
+    window.config = {
+        GitHubUserName     : "coldeyes308",
+        GitHubRepositories : "Hexo-LiveForCode",
+
+        User             : "Coldeyes",
+        UserAvatar       : "/image/sidebar/avatar.jpg",
+        WebsiteStartDate : "2020-01-01",
+        Home             : "https://www.coldeyes.link",
+
+        WebsiteTitleBlur         : "(◍´꒳`◍) Hi, Coldeyes",
+        WebsiteTitleBlurTimeOut  : 500,
+        WebsiteTitleFocus        : "(*´∇｀*) 欢迎回来!",
+        WebsiteTitleFocusTimeOut : 1000,
+        WebsiteFavicon           : {
+            light : "/image/website/logo/logo.png",
+            dark  : "/image/website/logo/logo-dark.png"
+        },
+
+        ProgressBar : {
+            id       : "topProgressBar",
+            color    : "#77B6FF",
+            height   : "2px",
+            duration : 0.2
+        },
+
+        Loading: {
+            rebound : {
+                tension  : 16,
+                friction : 5
+            },
+            spinner : {
+                id     : "spinner",
+                radius : 90,
+                sides  : 3,
+                depth  : 4,
+                colors : {
+                    background : "#F0F0F0",
+                    stroke     : "#272633",
+                    base       : "",
+                    child      : "#272633"
+                },
+                alwaysForward : true,
+                restAt        : 0.5,
+                renderBase    : false
+            }
+        },
+
+        HomeHeaderAnimationRendered : true,
+        HomeHeaderAnimation         : {
+            radius      : 15,
+            density     : 0.2,
+            color       : "rgba(255, 255, 255, .2)",
+            clearOffset : 0.3
+        },
+
+        BackAnimationRendered          : true,
+        IEBrowserBackAnimationRendered : false,
+        BackAnimation                  : {
+            colorSaturation  : "60%",
+            colorBrightness  : "50%",
+            colorAlpha       : 0.5,
+            colorCycleSpeed  : 5,
+            verticalPosition : "random",
+            horizontalSpeed  : 200,
+            ribbonCount      : 3,
+            strokeSize       : 0,
+            parallaxAmount   : -0.2,
+            animateSections  : true
+        },
+
+        HomeHeaderImage : [
+            
+                "/image/header/home.jpg",
+            
+                "/image/header/home.jpeg",
+            
+                "/image/header/back.jpeg",
+            
+                "/image/header/back.jpg",
+            
+                "/image/header/back.png",
+            
+        ],
+        HomeBannerText  : "",
+
+        ArticleHeaderImage : [
+            
+                "/image/header/article.jpg",
+            
+        ],
+
+        OtherBannerText : "",
+
+        Error : {
+            icon    : "icon-swimming",
+            title   : "PAGE NOT FOUND",
+            content : [
+                
+                    "很抱歉，您访问的页面不存在！",
+                
+                    "可能是输入地址有误或该地址已变更。",
+                
+            ],
+            buttons : [
+                
+                    {
+                        icon  : "icon-home",
+                        text  : "返回首页",
+                        href  : "/",
+                        class : ""
+                    },
+                
+            ]
+        },
+
+        MenuNotice : {
+            enable : true,
+            notice : "简单地活着，肆意而又精彩！",
+            speed  : 20
+        },
+        MenuList : [
+            
+                {
+                    name   : "首页",
+                    icon   : "icon-home-fill",
+                    href   : "/",
+                    type   : "index",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "分类",
+                    icon   : "icon-folder-fill",
+                    href   : "/category",
+                    type   : "category",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "标签",
+                    icon   : "icon-discount-fill",
+                    href   : "/tag",
+                    type   : "tag",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "归档",
+                    icon   : "icon-calendar-fill",
+                    href   : "/archive",
+                    type   : "archive",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "赞赏",
+                    icon   : "icon-heart-fill",
+                    href   : "/donate",
+                    type   : "donate",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "关于",
+                    icon   : "icon-about-fill",
+                    href   : "/about",
+                    type   : "about",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "订阅",
+                    icon   : "icon-rss",
+                    href   : "/atom.xml",
+                    type   : "",
+                    class  : "",
+                    target : "_blank"
+                },
+            
+                {
+                    name   : "搜索",
+                    icon   : "icon-search-menu",
+                    href   : "javascript:;",
+                    type   : "",
+                    class  : "search",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "留言板",
+                    icon   : "icon-comments-fill",
+                    href   : "/comment",
+                    type   : "comment",
+                    class  : "",
+                    target : "_self"
+                },
+            
+                {
+                    name   : "友情链接",
+                    icon   : "icon-link",
+                    href   : "/friend",
+                    type   : "friend",
+                    class  : "",
+                    target : "_self"
+                },
+            
+        ],
+        MenuLink : [
+            
+                
+                    {
+                        name   : "QQ",
+                        icon   : "icon-qq",
+                        href   : "https://wpa.qq.com/msgrd?v=3&uin=1553037531&site=qq&menu=yes&jumpflag=1",
+                        class  : "image",
+                        target : "_blank",
+                        image  : "/image/sidebar/qq.jpg"
+                    },
+                
+                    {
+                        name   : "twitter",
+                        icon   : "icon-twitter",
+                        href   : "https://twitter.com/coldeyes308",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+                    {
+                        name   : "GitHub",
+                        icon   : "icon-github",
+                        href   : "https://github.com/coldeyes308",
+                        class  : "",
+                        target : "_blank",
+                        image  : ""
+                    },
+                
+            
+        ],
+
+        FooterStyle : 2,
+        BottomText  : "<div><span class='face'>ღゝ◡╹)ノ♡</span></div><div>【星光闪烁梦幻境<span><i class='iconfont icon-like-fill'></i></span>科技韵律绘未来】</div><div>&copy; 2020-2023 Coldeyes. All Rights Reserved.</div>",
+
+        ConsoleList : [
+            
+                
+                    [
+                        
+                            
+                                "Based on cnblogs theme SimpleMemory.",
+                            
+                                "",
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                "SimpleMemory Author:",
+                            
+                                "Coldeyes",
+                            
+                        
+                    ],
+                
+                    [
+                        
+                            
+                                "Theme:",
+                            
+                                "LiveForCode",
+                            
+                        
+                    ],
+                
+            
+        ],
+
+        FontIconExtend : "",
+
+        Donate : {
+            paypal  : "",
+            bitcoin : "",
+            alipay  : "/image/donate/alipay.jpg",
+            wechat  : "/image/donate/wechat.jpg"
+        },
+
+        Search : {
+            applicationID : "U4APARL38T",
+            apiKey        : "3a48a484be00aa0b5f3455b98a307259",
+            indexName     : "Notes",
+            hits          : {
+                page : 10
+            },
+            labels        : {
+                placeholder : "搜索",
+                empty       : "未发现与 「${query}」 相关的内容",
+                stats       : "${hits} 条相关条目，使用了 ${time} 毫秒",
+            }
+        }, 
+
+        Comment : {
+            switch : true,
+            type   : "Waline",
+        },
+
+        Waline : {
+            el              : ".comments-content",
+            serverURL       : "https://waline-comments-kfugp5gol-coldeyes308.vercel.app/",
+            path            : window.location.pathname,
+            meta            : "['nick', 'mail', 'link']",
+            requiredMeta    : "['nick', 'mail']",
+            pageSize        : 10,
+            lang            : "zh-cn",
+            locale: {
+                admin       : "博主",
+                anonymous   : "匿名用户",
+                sofa        : "快来做第一个评论的人吧 ~",
+                placeholder : "你是我一生只会遇见一次的惊喜...",
+            },
+            dark            : "html[color-scheme='dark']",
+            search          : false,
+            pageview        : true,
+            comment         : true,
+            copyright       : false,
+        },
+
+        Valine : {
+            el             : ".comments-content",
+            appId          : "yOsWhu07FyYSqnPN38lqSkTk-MdYXbMMI",
+            appKey         : "Q5luCVPugp08y79peQ2bStnb",
+            serverURLs     : "https://yoswhu07.api.lncldglobal.com",
+            placeholder    : "你是我一生只会遇见一次的惊喜...",
+            avatar         : "mm",
+            meta           : "nick,mail,link",
+            requiredFields : "nick,mail",
+            pageSize       : 5,
+            lang           : "zh-cn",
+            visitor        : true,
+            enableQQ       : true
+        },
+
+        Tocbot : {
+            switch                : true,
+            tocSelector           : ".toc",
+            contentSelector       : ".article-body",
+            headingSelector       : "h1, h2, h3, h4, h5",
+            headingsOffset        : 0,
+            scrollSmooth          : true,
+            scrollSmoothOffset    : -5,
+            positionFixedSelector : ".toc",
+            positionFixedClass    : "toc-fixed",
+            fixedSidebarOffset    : "",
+        },
+
+        Require : {
+            baseUrl     : "/js/",
+            waitSeconds : 100
+        },
+
+        Music : {
+            type : "Meting"
+        },
+        APlayer : {
+            container : ".aplayer",
+            fixed     : true,
+            autoplay  : false,
+            loop      : "all",
+            order     : "random",
+            preload   : "auto",
+            volume    : 0.67,
+            mutex     : true,
+            lrcType   : 3,
+            audio     : [
+                
+                    {
+                        name   : "Endless Tears",
+                        artist : "CLIFF EDGE",
+                        cover  : "/music/cover/Endless Tears.jpg",
+                        url    : "/music/song/Endless Tears.mp3",
+                        lrc    : "/music/lrc/Endless Tears.lrc"
+                    },
+                
+            ]
+        },
+        Meting : {
+            api      : "https://api.i-meto.com/meting/api",
+            id       : "3778678", 
+            lrcshow  : false, 
+            server   : "netease", 
+            type     : "playlist", 
+            fixed    : true, 
+            autoplay : false, 
+            loop     : "all", 
+            order    : "random", 
+            preload  : "auto", 
+            volume   : 0.67, 
+            mutex    : true
+        },
+
+        Mouse : {
+            enable  : true,
+            options : {
+                size  : 6,
+                sizeF : 24
+            }
+        },
+
+        LazyLoad : {
+            default : "/image/website/lazyload.svg"
+        },
+  
+        Style : {
+            aplayer          : "/css/APlayer.css",
+            archive          : "/css/archive.css",
+            base             : "/css/base.css",
+            clipboard        : "/css/clipboard.css",
+            code             : "/css/code.css",
+            donate           : "/css/donate.css",
+            fancybox         : "/css/jquery.fancybox.css",
+            footer           : "/css/footer.css",
+            iconfont         : "/iconfont/iconfont.css",
+            index            : "/css/index.css",
+            menuBubble       : "/css/menu-bubble.css",
+            mouse            : "/css/mouse.css",
+            page             : "/css/page.css",
+            post             : "/css/post.css",
+            search           : "/css/search.css",
+            tocbot           : "/css/tocbot.css",
+            valine           : "/css/valine.css",
+            waline           : "/css/waline.css",
+            walineCustom     : "/css/waline-custom.css"
+        },
+
+        Script: {
+            aplayer          : "/js/APlayer.min.js",
+            config           : "/js/require.config.js",
+            index            : "/js/index.js",
+            instantSearch    : "/js/instantsearch.min.js",
+            iscroll          : "/js/iscroll.js",
+            jQuery           : "/js/jquery-3.4.1.min.js",
+            loading          : "/js/loading.js",
+            meting           : "/js/Meting.min.js",
+            require          : "/js/require.min.js",
+            waline           : "/js/waline.mjs",
+            pageview         : "/js/pageview.mjs",
+            comment          : "/js/comment.mjs",
+        },
+
+        Font: {
+            LongCang    : "/font/LongCang.css",
+            Monda       : "/font/Monda.css",
+            NotoSansSC  : "/font/NotoSansSC.css",
+            NotoSerifSC : "/font/NotoSerifSC.css",
+            Playball    : "/font/Playball.css",
+            PTMono      : "/font/PTMono.css",
+            Roboto      : "/font/Roboto.css",
+            RobotoSlab  : "/font/RobotoSlab.css",
+            Rosario     : "/font/Rosario.css",
+            UbuntuMono  : "/font/UbuntuMono.css"
+        },
+
+        Suffix : {
+            about : "0 和 1 是我的语言，代码世界是我的乐园。"
+        },
+            
+        Theme : {
+            url  : "https://github.com/first19326/Hexo-LiveForCode",
+            name : "Hexo - Live For Code"
+        }  
+    };
+</script>
+    <script type="text/javascript" src="/js/index.js"></script>
+</body>
+</html>
