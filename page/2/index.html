@@ -75,13 +75,13 @@
                             </span>
                             
                                 
-                                    <span id="/article/614282477/" class="leancloud_visitors" data-flag-title="第3课-英语造句的被动结构（上）">
-                                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                                    <span>
+                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/article/614282477/"></span>
                                     </span>
                                 
                                 
                                     <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/article/614282477/"></span>
+                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/article/614282477/"></span>
                                     </span>
                                 
                             
@@ -107,13 +107,13 @@
                             </span>
                             
                                 
-                                    <span id="/article/2935481740/" class="leancloud_visitors" data-flag-title="第2课-说和写英文的时候，如何避免犯时态错误—年轻人的技能学习神器~">
-                                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                                    <span>
+                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/article/2935481740/"></span>
                                     </span>
                                 
                                 
                                     <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/article/2935481740/"></span>
+                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/article/2935481740/"></span>
                                     </span>
                                 
                             
@@ -139,13 +139,13 @@
                             </span>
                             
                                 
-                                    <span id="/article/3046100256/" class="leancloud_visitors" data-flag-title="第1课-英国首相丘吉尔的英语学习方法（下）">
-                                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                                    <span>
+                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/article/3046100256/"></span>
                                     </span>
                                 
                                 
                                     <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/article/3046100256/"></span>
+                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/article/3046100256/"></span>
                                     </span>
                                 
                             
@@ -171,13 +171,13 @@
                             </span>
                             
                                 
-                                    <span id="/article/3926551245/" class="leancloud_visitors" data-flag-title="第1课-英语简单句的造句法则和基本语法概念（上)">
-                                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                                    <span>
+                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/article/3926551245/"></span>
                                     </span>
                                 
                                 
                                     <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/article/3926551245/"></span>
+                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/article/3926551245/"></span>
                                     </span>
                                 
                             
@@ -203,13 +203,13 @@
                             </span>
                             
                                 
-                                    <span id="/article/4020369381/" class="leancloud_visitors" data-flag-title="15天面试冲击刷刷刷_day1~">
-                                        <i class="iconfont icon-browse"></i> 阅读：<sapn class="leancloud-visitors-count"></span>
+                                    <span>
+                                        <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/article/4020369381/"></span>
                                     </span>
                                 
                                 
                                     <span>
-                                        <i class="iconfont icon-interactive"></i> 评论：<span class="valine-comment-count" data-xid="/article/4020369381/"></span>
+                                        <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/article/4020369381/"></span>
                                     </span>
                                 
                             
@@ -218,6 +218,27 @@
                     </div>
                 
             </div>
+            
+                
+                    <script type="module">
+                        import { pageviewCount } from "/js/pageview.mjs";
+                      
+                        pageviewCount({
+                          serverURL: "https://www.coldeyes.pp.ua/",
+                          path: window.location.pathname,
+                        });
+                    </script>
+                
+                
+                    <script type="module">
+                        import { commentCount } from "/js/comment.mjs";
+                      
+                        commentCount({
+                          serverURL: "https://www.coldeyes.pp.ua/",
+                          path: window.location.pathname,
+                        });
+                    </script>
+                
             
             
         
@@ -708,7 +729,7 @@
 
         Comment : {
             switch : true,
-            type   : "Valine",
+            type   : "Waline",
         },
 
         Waline : {

@@ -76,7 +76,16 @@
 </div>
                     
                 </div>
-                 
+                
+    <script type="module">
+        import { pageviewCount } from "/js/pageview.mjs";
+      
+        pageviewCount({
+          serverURL: "https://www.coldeyes.pp.ua/",
+          path: window.location.pathname,
+        });
+    </script>
+ 
             </div>
         
     
@@ -558,7 +567,7 @@
 
         Comment : {
             switch : true,
-            type   : "Valine",
+            type   : "Waline",
         },
 
         Waline : {
