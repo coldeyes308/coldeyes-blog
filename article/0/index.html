@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            分类 - 面试题
+            
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -33,15 +33,32 @@
 </head>
 <body>
     <a id="cover"></a>
-    <link type="text/css" rel="stylesheet" href="/css/archive.css">
+    <link type="text/css" rel="stylesheet" href="/css/post.css">
 <div id="header" class="header">
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-subtitle">分类归档</h1>
+                <h1 class="header-subtitle"></h1>
                 <div class="header-subinfo">
-                    <p class="article-info-text Chinese"></p>
-                    <p class="article-info-text English"></p>                  
+                    <p class="article-info-text">
+                        <span>
+                            <i class="iconfont icon-time"></i> 发表时间：2023-11-22
+                        </span>
+                        
+                            
+                                <span>
+                                    <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/article/0/" /></span>
+                                </span>
+                            
+                            
+                                <span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/article/0/"></span>
+                                </span>
+                              
+                        
+                    </p>
+                    
+                    
                 </div>
             
         </div>
@@ -50,67 +67,152 @@
 </div>
 <div id="container">
     
-        
-            <!-- 归档页面、分类归档页面、标签归档页面 -->
-            <div class="articles">
-                <div class="articles-wrap">
-                    <span class="archive-move-on"></span>
-                    <span class="archive-counter">
-                        
-                            当前分类：<span class="category">面试题</span>
-                        
-                    </span>
+        <!-- 文章页面 -->
+        <div id="article">
+            <div class="toc"></div>
+            <div class="article-body">
+                <hr>
+<p>title: 今日面试题一<br>
+tags:</p>
+<ul>
+<li>java</li>
+<li>并发编程<br>
+categories:</li>
+<li>面试题<br>
+description: 今日面试题<br>
+abbrlink: 313233591<br>
+date: 2023-09-29 08:21:38</li>
+</ul>
+<hr>
+<h3 id="1-谈谈你对AQS的理解">1.谈谈你对AQS的理解?</h3>
+<p>AQS是多线程同步器，它是JUC包中多个组件的底层实现，比如(Lock, CountDownlatch, Semaphore)都用到了AQS，本质上说，AQS提供了2种锁的机制，分别是排它锁和共享锁。</p>
+<p>排它锁：就是存在多个线程去竞争同一共享资源的时候，同一时刻，只允许一个线程去访问这样一个共享资源，也就是说，多个线程中只能有一个线程去获得这样一个锁的资源，比如Lock中的ReentrantLock重入锁它的一个实现就是用到了AQS中的一个排它锁的功能</p>
+<p>共享锁：也称为读锁，就是在同一个时刻允许多个线程同时获得这样一个锁的资源，比如(CountDownlatch,Semaphore)都用到了AQS中的共享锁的功能</p>
+<p>AQS作为互斥锁来说，它的整个设计体系中，需要解决三个核心问题</p>
+<p>一 互斥变量的设计，以及如何保证多线程同时更新互斥变量的时候，线程的安全性</p>
+<p>二 未竞争到锁资源的线程的等待，以及竞争到锁的资源，释放锁之后的唤醒</p>
+<p>三 锁竞争的公平性和非公平性</p>
+<p>AQS采用了一个int类型的互斥变量‘state’ ,用来记录锁竞争的一个状态，0表示当前没有任何线程竞争锁资源，大于等于1表示已经有线程正在持有锁资源，一个线程来获得锁资源的时候，首先判断‘state’是否等于0，如果是，把这个‘state‘更新成1，表示占用到锁，如果这个过程中多个线程去做这个操作，就会导致线程安全性问题，因此AQS采用了CAS机制，去保证’state‘互斥变量更新的一个原子性</p>
+<p>未获得到锁的资源，通过Unsafe类中的park方法去进行阻塞，把阻塞的线程按照先进先出的原则去加入到一个双向链表的一个结构中，当获得锁资源的线程释放锁之后，会从这样一个双向链表的头部去唤醒下一个等待的线程，再去竞争锁</p>
+<p>关于锁竞争的公平性和非公平性，AQS的处理方式是，在竞争锁资源的时候，公平锁需要去判断双向链表中是否有阻塞的线程，如果有，则需要去排队等待，而非公平锁的处理方式是，不管双向链表中是否存在等待竞争锁的线程，它都会直接去尝试更改互斥变量’state‘去竞争锁，假设在一个锁的临界点，获得锁的线程释放锁，此时state等于0，而当前的这个线程去抢占锁的时候，正好可以把’state’修改为1，那么就表示它可以拿到锁，而这个过程是非公平的</p>
+<h3 id="2-Lock和synchronized的区别">2.Lock和synchronized的区别</h3>
+<p>从功能角度来看: Lock和Synchronized都是java中去用来解决线程安全问题的一个工具<br>
+从特性来看: Synchronized是java中的同步关键字，而Lock是JUC包里面提供的一个接口，这个接口有很多的实现类，其中就包括Reentrantlock这样一个重入锁的实现，其次Synchronized可以通过两种方式去控制锁的粒度，1-&gt;把synchronized关键字修饰在方法层面。2-&gt;修饰在代码块上。 并且可以通过Synchronized加锁对象的生命周期来控制锁的作用范围，比如锁对象是静态对象或者是类对象，那么这个锁就属于全局锁。如果锁对象是普通实例对象，那么这个锁的范围取决于这个实例的生命周期。Lock中锁的粒度是通过里面提供的’lock()‘方法和’unlock()‘方法来决定的，Lock比Sychronized的灵活性更高，可以决定什么时候加锁，什么时候释放锁，只需要调用lock和unlock这两个方法，同时，Lock还提供了非阻塞的竞争锁的方法’trylock()’,这个方法可以通过返回true/false来告诉当前线程是否已经有其它线程正在使用锁，而Synchronized是关键字，所以它无法实现非阻塞竞争锁的方法，Synchronized锁的释放是被动的，就是当synchoronzied代码块执行结束之后，或者代码出现异常的时候才会释放锁。Lock提供了公平锁和非公平锁定的机制，公平锁是指线程竞争锁资源的时候，如果已经有其他线程正在排队，或者等待锁释放，那么当前竞争锁的线程是无法去插队的。非公平锁就是，不管是否有线程在排队等待锁，都会去尝试去竞争一次锁。Synchronized只提供了一种非公平锁的实现</p>
+<p>从性能方面来看: 性能相差不大，实现有一点区别。Synchronized引入了偏向锁，轻量级锁，重量级锁，以及锁升级的机制去实现锁的优化。而Lock中用到了自旋锁的方式去实现性能优化。</p>
+<h3 id="3-线程池是如何知道一个线程的任务已经执行完成">3.线程池是如何知道一个线程的任务已经执行完成</h3>
+<p>线程池内部: 当我们把一个线程丢给线程池去执行的时候，线程池会调度工作线程来执行这个任务的run()方法，当run()方法正常执行结束以后，就意味着这个任务完成了，所以线程池中的工作线程是通过同步调用任务的run()方法，并且等待run()方法返回后，再去统计任务的完成数量。<br>
+线程池外部: 如果想在线程池外部去获取线程池内部的任务执行状态有几种方法可以实现</p>
+<ol>
+<li>线程池提供了一个isTerminated()方法，可以去判断线程池的运行状态，我们可以循环去判断isTerminated()方法的返回值，来去了解线程的运行状态，一旦线程池的运行状态是Teminated意味着线程池中的所有任务都已经执行完成了，但是想要通过这个方法去获取线程状态的前提是程序中需要主动去调用线程池的shutdown()方法，在实际业务中一般不会去主动关闭线程池，因此这个方法在使用性和灵活性方面都不是很好</li>
+<li>线程池中有一个叫submit()方法，它提供了一个Future的返回值，我们可以通过Future.get()方法去获得任务的执行结果，当线程池中的任务没有执行完之前，Future.get()方法会一直阻塞，直到任务执行结束，因此，只要Future.get()方法正常返回，就意味着，传入线程池中任务已经执行完成了。</li>
+<li>我们可以引入CountDownLatch这样一个计数器，它可以通过初始化指定的一个计数器去进行倒计时，其中提供了两个方法，分别是await()阻塞线程和countDown()进行倒计时，一旦倒计时归零，所有被阻塞在await()方法的线程都会被释放，基于这样一个原理，我们可以去定义一个CountDownLatch对象并且计数器为1，接着，在线程池代码块的后面去调用await()方法阻塞主线程，然后当传入到线程池中的任务执行完成以后，调用countDown()方法去表示任务执行结束，最后计数器归零，唤醒处于await()方法阻塞的线程。</li>
+</ol>
+<p>不管是线程池内部还是外部，想要知道线程是否执行结束，我们必须要获取线程执行结束后的状态，而线程本身没有返回值，所以只能通过阻塞-唤醒的方式来实现，Future.get()和CountDownLatch都是这样一个原理。</p>
+<h3 id="4-什么叫阻塞队列的有界和无界">4.什么叫阻塞队列的有界和无界</h3>
+<p>阻塞队列是一种特殊的队列，它在普通队列的基础上提供了两种附加的功能，第一个，当队列为空时，获取队列中元素的消费者线程会被阻塞，同时会唤醒生产者线程。第二个，当队列中的元素满了的时候，向队列中去添加一个元素的生产者线程会被阻塞，同时会唤醒消费者线程，其中，阻塞队列中能够容纳的元素个数，通常情况下是有限的，比如说，我们去实例化一个ArrayBlockingList,可以在构造方法中传入一个整型的数字，表示这个基于数组的阻塞队列中，能够容纳的元素个数，这种我们称为有界队列，第三，而无界队列就是没有设置固定大小的队列，不过它并不像我们理解的那样元素中没有任何限制，而是它的元素存储量很大，像LinkedBlockingQueue,它的默认队列长度是Integer.Max_Value,所以我们感知不到它的长度限制，最后，无界队列存在比较大的潜在风险，如果我们在并发量比较大的情况下，线程池中几乎可以无限制的添加任务，容易导致内存溢出的问题。</p>
+<h3 id="5-ConcurrentHashMap底层具体实现原理">5.ConcurrentHashMap底层具体实现原理</h3>
+<ol>
+<li>ConcurrentHashMap的整体架构: 当我们去初始化ConcurrentHashMap实例的时候，默认会初始化一个长度等于16的数组，由于ConcurrentHashMap它的核心任然是Hash表，所以必然会存在Hash冲突的问题，所以，ConcurrentHashMap采用链式寻址的方式来解决Hash表的冲突，当Hash冲突比较多的时候，会造成链表长度较长的问题，所以这种情况下会使得ConcurrentHashMap中的一个数组元素的查询复杂度增加，所以在JDK1.8中，引入了红黑树的机制，当数组长度大于64并且链表的长度大于等于8的时候，单向链表就会转化为红黑树，另外，随着ConcurrentHashMap的一个动态扩容，一旦链表的长度小于8，红黑树会退化成单项链表。</li>
+<li>ConcurrentHashMap的基本功能: ConcurrentHashMap本质上是一个HashMap,所以功能和HashMap一致，但是，ConcurrentHashMap在HashMap的基础上提供了并发安全的实现，并发安全的实现主要是通过对于Node节点去加锁来保证数据更新的安全性。</li>
+<li>ConcurrentHashMap在性能方面做的优化: 如何在并发线程和数据安全性之间做好平衡，在很多地方都有类似的设计，比如说:cpu的三级缓存，mysql的buffer_pool, Synchronized的锁升级等等。ConcurrentHashMap也做了类似的优化，主要体现在几个方面，第一个，在JDK1.8里面，ConcurrentHashMap它的锁的粒度是数组中的某一个节点，而在JDK1.7里面，它锁定的是Segment,锁的范围要更大，所以性能上更低。第二个，引入红黑树这样一个机制，去降低了数据查询的时间复杂度，红黑树的时间复杂度是O(logn).第三个，当数组的长度不够的时候，ConcurrentHashMap它需要对数组进行扩容，而在扩容的实现上，ConcurrentHashMap引入了多线程并发扩容的一个实现，简单说，就是多个线程对原始数组进行分片，分片之后，每个线程去负责一个分片的数据迁移，从而整体的提升了扩容过程中的数据迁移的一个效率。第四个，ConcurrentHashMap它有一个size()方法来获取总的元素个数，而在多线程并发场景中，在保证原子性的前提下，去实现元素个数的累加，性能是非常低的，所以ConcurrentHashMap在这个方面做了两个点的优化，1.当线程竞争不激烈的时候直接采用CAS的方式来实现元素个数的一个原子递增，2.如果线程竞争比较激烈的情况下，使用一个数组来维护元素个数，如果要增加总的元素个数时，直接从数组中随机选择一个，再通过CAS算法来实现原子递增，它的核心思想是引入了数组来实现对并发更新的一个负载。</li>
+</ol>
+<h3 id="6-谈一下CAS机制">6.谈一下CAS机制</h3>
+<p>CAS是Java中UnSafe类中的一个方法，它的全称叫CompareAndSwap,比较并且交换的意思，它的主要功能是保证在多线程的环境下，对于共享变量修改的一个原子性。<br>
+比如：场景:<br>
+有一个成员变量叫state,它的默认值是0，其中定义了一个方法叫doSomething(),这个方法的逻辑是先判断state是否为0,如果为0就修改为1，这个逻辑在单线程的情况下看起来没有问题，但是在多线程环境下会存在原子性的问题，因为这是一个典型的Read-Write的一个操作，一般情况下，我们会在doSomething()这个方法中加一个Synchronized的同步锁来解决原子性问题，但是，加同步锁一定会带来性能上的损耗，所以，对于这样一个场景我们可以使用CAS机制来进行优化，在doSomething()方法中，调用Unsafe类中的compareAndSwapInt()方法来达到同样的目的，这个方法有四个参数，分别是:当前对象实例, 成员变量state在内存中的一个偏移量，预期值0，期望更改之后的值1。 CAS机制会比较state内存地址偏移量对应的值和传入的预期值0是否相等，如果相等，就直接修改内存地址中state的值等于1，否则返回false,表示修改失败，而这个过程是一个原子的，不会存在任何线程安全的问题。compareAndSwap是一个native方法，最终还是会面临同样的问题，就是先从内存地址中读取state值，然后去比较，最后去修改，这个过程不管在什么层面实现，都会存在原子性问题，所以，在CompareAndSwap的底层实现里，如果是在多核的CPU环境下，会增加一个Lock指令，来对缓存或者总线去加锁，从而去保证比较并替换这两个操作的原子性，CAS主要是应用在一些并发场景中，比较典型的场景有两个: 1.JUC里面的Atomic的原子实现，比如: AtomicInteger 和 AtomicLong  2.实现多线程对共享资源竞争的互斥特质，比如: AQS, ConcurrentHashMap, ConcurrentLinkedQueue等等。</p>
+<h3 id="7-死锁的发生原因和怎么避免">7.死锁的发生原因和怎么避免</h3>
+<p>死锁就是2个或2个以上的线程在执行的过程中去争夺同一个共享资源造成的相互等待的现象，如果没有外部的干预，线程会一直阻塞，无法往下执行，这样一直处于相互等待资源的线程我们称为死锁线程，导致死锁的条件有四个:</p>
+<ol>
+<li>互斥条件:共享资源X和Y只能被一个线程占用</li>
+<li>请求和保持条件，线程T1已经取得共享资源X,在等待共享资源Y的时候，不释放共享资源X</li>
+<li>不可抢占条件，其他线程不能强行抢占线程T1占有的资源</li>
+<li>循环等待条件，线程T1等待线程T2占有的资源，线程T2等待线程T1占有的资源就是循环等待<br>
+导致死锁之后，只能通过人工干预来解决，比如:重启服务，kill掉这个线程。 所以只能在写代码的时候去规避可能出现的死锁问题，而按照死锁发生的四个条件，我们只需要破坏其中的任何一种就可以去解决它，但是互斥条件是没办法破坏的，因为它是互斥锁的基本约束，而其它三个条件都可以破坏，比如对于2.请求和保持条件，我们可以一次性申请所有的资源，这样就不存在锁要等待了。对于3.不可抢占条件，占用部分资源的线程在进一步申请其它资源的时候，如果申请不到，我们可以主动去释放它占用的资源，这样不可抢占条件就被破坏了。对于4.循环等待条件，可以按序申请资源来预防，所谓按需申请就是指资源是有线性顺序的，申请的时候可以先申请资源序号小的，然后再去申请资源序号大的，这样线性化之后，就不存在循环了。</li>
+</ol>
+<h3 id="8-wait和notify为什么要在synchronized代码块中">8.wait和notify为什么要在synchronized代码块中</h3>
+<p>wait和notify是用来实现多个线程之间的协调，wait表示让线程进入阻塞状态，notify表示让阻塞的线程被唤醒，wait和notify必然是成对出现的，如果一个线程被wait()方法阻塞，那么必然需要另外一个线程通过notify()方法来唤醒，从而去实现多个线程之间的一个通信，在多线程里要实现多线程之间的通信除了管道流以外，只能通过共享变量的方法来实现，也就是说线程T1修改共享变量S,线程T2获得修改后的共享变量S的值，从而去完成数据的一个通讯，但是多线程本身是具有并行执行的一个特征，也就是说在同一时刻，多个线程是可以同时来执行，那么这种情况下，线程T2在访问共享变量S之前，必须知道线程T1已经修改过了这个共享变量S,否则就需要等待，同时在修改之后还需要把处于等待状态下的线程唤醒，所以，需要实现线程之间的通信就必须要有一个静态条件，去控制线程什么时候条件等待，什么时候条件唤醒，而Synchronized同步关键字就可以实现这样一个互斥条件，也就是在通过共享变量来实现多个线程通信的一个场景里面，参与通信的线程必须要去竞争到这个共享变量的一个锁资源，才能够有资格对共享变量进行修改，修改完成之后释放锁，其它线程就可以再次竞争同一个共享变量的锁来获取修改之后的数据，从而去完成线程之间的一个通信，所以这也是为什么wait和notify需要放在synchronized代码块里的一个原因，有了synchronzied同步锁就可以实现对于多个通信线程之间的一个互斥，从而去实现条件等待和条件唤醒，另外为了避免wait和notify的错误使用，JDK强制要求把wait和notify写在同步代码块里，否则会抛出一个IllegalMonitorStateException的异常，最后基于wait和notify的特性，非常适合实现生产者和消费者的一个模型，比如wait和notify来实现连接池的就绪等待和就绪之后的唤醒。</p>
+
+                
+                <p class="end">__END__</p>
+            </div>
+            <div class="article-footer">
+                <div class="suffix-box">
+    <div class="suffix-box-left">
+        <img src="/image/sidebar/avatar.jpg" alt="Coldeyes">
+    </div>
+    <div class="suffix-box-right">
+        <span class="suffix-box-title">文章作者：</span>Coldeyes
+        <br>
+        <span class="suffix-box-title">文章出处：</span><a href="/article/0/" target="_blank"></a>
+        <br>
+        <span class="suffix-box-title">作者签名：</span>0 和 1 是我的语言，代码世界是我的乐园。
+        <br>
+        <span class="suffix-box-title">关于主题：</span><a href="https://github.com/first19326/Hexo-LiveForCode" target="_blank">Hexo - Live For Code</a>
+        <br>
+        <span class="suffix-box-title">版权声明：</span>文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" title="BY-NC-SA" target="_blank">BY-NC-SA</a> 许可协议，转载请注明出处
+        <br>
+    </div>
+    <div style="clear: both;"></div>
+</div>
+                
+                
+                <div class="article-prev-next">
                     
                     
-                        
-                            <div class="archive-title">
-                                <h2 class="archive-year">2023</h2>
-                            </div>
-                            
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/article/1727856258/"><span>springboot面试题</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">11-14</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/article/690732574/"><span>今日面试题二</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">10-03</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/article/4020369381/"><span>15天面试冲击刷刷刷_day1~</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">07-30</span>
-                                </div>
-                            </div>
-                        </div>
-                    
-                           
-                        <div class="article">
-                            <div class="article-header">
-                                <h1 class="article-title"><a href="/article/2777124110/"><span>redis常见面试题</span></a></h1>
-                                <div class="article-meta">
-                                    <span class="article-time">07-29</span>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="/article/3533297121/" class="next-prefix">» </a> 下一篇：    <a href="/article/3533297121/" title="发布于 2023-11-16 10:48">windows安装mysql</a>
                     
                 </div>
             </div>
             
+    <div class="article-comments">
         
+            <div class="comments-title">
+                评论列表
+            </div>
+        
+        <div class="comments-content"></div>
+    </div>
+    
+        <!-- 样式文件 -->
+        <link rel="stylesheet" href="/css/waline.css"/>
+        <link rel="stylesheet" href="/css/waline-custom.css"/>
+        <!-- 脚本文件 -->
+        <script type="module">
+            import { init } from "/js/waline.mjs";
+
+            const WalineInstance = init({
+                el              : ".comments-content",
+                serverURL       : "https://www.coldeyes.pp.ua/",
+                path            : window.location.pathname,
+                meta            : ['nick', 'mail', 'link'],
+                requiredMeta    : ['nick', 'mail'],
+                pageSize        : 10,
+                lang            : "zh-cn",
+                locale: {
+                    admin       : "博主",
+                    anonymous   : "匿名用户",
+                    sofa        : "快来做第一个评论的人吧 ~",
+                    placeholder : "你是我一生只会遇见一次的惊喜...",
+                },
+                dark            : "html[color-scheme='dark']",
+                search          : false,
+                pageview        : true,
+                comment         : true,
+                copyright       : false,
+            });
+
+            // Waline 输入框选中动画
+            $(document).on("focus", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color-focus)");
+            });
+
+            $(document).on("blur", ".wl-header-item .wl-input", function() {
+                $(this).parent().css("border-bottom-color", "var(--input-border-color)");
+            });
+        </script>
+    
+ 
+        </div>
     
 </div>
     <div id="footer">

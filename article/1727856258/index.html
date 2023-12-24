@@ -9,7 +9,7 @@
     <meta http-equiv="Cache-Control" content="no-siteapp">
     <title>
         
-            今日面试题一
+            springboot面试题
         
     </title>
     <link rel="shortcut icon" href="#"/>
@@ -38,21 +38,21 @@
     <div class="vertical">
         <div class="inner">
             
-                <h1 class="header-subtitle">今日面试题一</h1>
+                <h1 class="header-subtitle">springboot面试题</h1>
                 <div class="header-subinfo">
                     <p class="article-info-text">
                         <span>
-                            <i class="iconfont icon-time"></i> 发表时间：2023-09-29
+                            <i class="iconfont icon-time"></i> 发表时间：2023-11-14
                         </span>
                         
                             
                                 <span>
-                                    <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/article/313233591/" /></span>
+                                    <i class="iconfont icon-browse"></i> 阅读：<span class="waline-pageview-count" data-path="/article/1727856258/" /></span>
                                 </span>
                             
                             
                                 <span>
-                                    <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/article/313233591/"></span>
+                                    <i class="iconfont icon-interactive"></i> 评论：<span class="waline-comment-count" data-path="/article/1727856258/"></span>
                                 </span>
                               
                         
@@ -64,9 +64,7 @@
                     
                     
                         
-                            <span class="tag-color">java</span>
-                        
-                            <span class="tag-color">并发编程</span>
+                            <span class="tag-color">springboot</span>
                         
                     
                 </div>
@@ -81,21 +79,14 @@
         <div id="article">
             <div class="toc"></div>
             <div class="article-body">
-                <h3 id="1-谈谈你对AQS的理解">1.谈谈你对AQS的理解?</h3>
-<p>AQS是多线程同步器，它是JUC包中多个组件的底层实现，比如(Lock, CountDownlatch, Semaphore)都用到了AQS，本质上说，AQS提供了2种锁的机制，分别是排它锁和共享锁。</p>
-<p>排它锁：就是存在多个线程去竞争同一共享资源的时候，同一时刻，只允许一个线程去访问这样一个共享资源，也就是说，多个线程中只能有一个线程去获得这样一个锁的资源，比如Lock中的ReentrantLock重入锁它的一个实现就是用到了AQS中的一个排它锁的功能</p>
-<p>共享锁：也称为读锁，就是在同一个时刻允许多个线程同时获得这样一个锁的资源，比如(CountDownlatch,Semaphore)都用到了AQS中的共享锁的功能</p>
-<p>AQS作为互斥锁来说，它的整个设计体系中，需要解决三个核心问题</p>
-<p>一 互斥变量的设计，以及如何保证多线程同时更新互斥变量的时候，线程的安全性</p>
-<p>二 未竞争到锁资源的线程的等待，以及竞争到锁的资源，释放锁之后的唤醒</p>
-<p>三 锁竞争的公平性和非公平性</p>
-<p>AQS采用了一个int类型的互斥变量‘state’ ,用来记录锁竞争的一个状态，0表示当前没有任何线程竞争锁资源，大于等于1表示已经有线程正在持有锁资源，一个线程来获得锁资源的时候，首先判断‘state’是否等于0，如果是，把这个‘state‘更新成1，表示占用到锁，如果这个过程中多个线程去做这个操作，就会导致线程安全性问题，因此AQS采用了CAS机制，去保证’state‘互斥变量更新的一个原子性</p>
-<p>未获得到锁的资源，通过Unsafe类中的park方法去进行阻塞，把阻塞的线程按照先进先出的原则去加入到一个双向链表的一个结构中，当获得锁资源的线程释放锁之后，会从这样一个双向链表的头部去唤醒下一个等待的线程，再去竞争锁</p>
-<p>关于锁竞争的公平性和非公平性，AQS的处理方式是，在竞争锁资源的时候，公平锁需要去判断双向链表中是否有阻塞的线程，如果有，则需要去排队等待，而非公平锁的处理方式是，不管双向链表中是否存在等待竞争锁的线程，它都会直接去尝试更改互斥变量’state‘去竞争锁，假设在一个锁的临界点，获得锁的线程释放锁，此时state等于0，而当前的这个线程去抢占锁的时候，正好可以把’state’修改为1，那么就表示它可以拿到锁，而这个过程是非公平的</p>
-<h3 id="2-Lock和synchronized的区别">2.Lock和synchronized的区别</h3>
-<p>从功能角度来看: Lock和Synchronized都是java中去用来解决线程安全问题的一个工具<br>
-从特性来看: Synchronized是java中的同步关键字，而Lock是JUC包里面提供的一个接口，这个接口有很多的实现类，其中就包括Reentrantlock这样一个重入锁的实现，其次Synchronized可以通过两种方式去控制锁的粒度，1-&gt;把synchronized关键字修饰在方法层面。2-&gt;修饰在代码块上。 并且可以通过Synchronized加锁对象的生命周期来控制锁的作用范围，比如锁对象是静态对象或者是类对象，那么这个锁就属于全局锁。如果锁对象是普通实例对象，那么这个锁的范围取决于这个实例的生命周期。Lock中锁的粒度是通过里面提供的’lock()‘方法和’unlock()‘方法来决定的，Lock比Sychronized的灵活性更高，可以决定什么时候加锁，什么时候释放锁，只需要调用lock和unlock这两个方法，同时，Lock还提供了非阻塞的竞争锁的方法’trylock()’,这个方法可以通过返回true/false来告诉当前线程是否已经有其它线程正在使用锁，而Synchronized是关键字，所以它无法实现非阻塞竞争锁的方法，Synchronized锁的释放是被动的，就是当synchoronzied代码块执行结束之后，或者代码出现异常的时候才会释放锁。Lock提供了公平锁和非公平锁定的机制，公平锁是指线程竞争锁资源的时候，如果已经有其他线程正在排队，或者等待锁释放，那么当前竞争锁的线程是无法去插队的。非公平锁就是，不管是否有线程在排队等待锁，都会去尝试去竞争一次锁。Synchronized只提供了一种非公平锁的实现</p>
-<p>从性能方面来看: 性能相差不大，实现有一点区别。Synchronized引入了偏向锁，轻量级锁，重量级锁，以及锁升级的机制去实现锁的优化。而Lock中用到了自旋锁的方式去实现性能优化。</p>
+                <h3 id="Spring-boot的自动配置原理">Spring boot的自动配置原理</h3>
+<p>1.通过@SpringbootConfiguration注解引入@EnableAutoConfigration(启动自动配置功能)</p>
+<p>2.@EnableAutoConfigration引入@Import</p>
+<p>3.Springboot启动时: 当Ioc容器加载时会解析@Import注解</p>
+<p>4.@Import导入了DeferredImportSelector，它使SpringBoot的自动配置类的顺序在最后，这样方便扩展和覆盖</p>
+<p>5.读取所有的/META-INF/spring.factories文件</p>
+<p>6.过滤所有AutoConfigurationClass类型的类</p>
+<p>7.最后通过@ConditionOnXXX排除无效的自动配置类</p>
 
                 
                 <p class="end">__END__</p>
@@ -108,7 +99,7 @@
     <div class="suffix-box-right">
         <span class="suffix-box-title">文章作者：</span>Coldeyes
         <br>
-        <span class="suffix-box-title">文章出处：</span><a href="/article/313233591/" target="_blank">今日面试题一</a>
+        <span class="suffix-box-title">文章出处：</span><a href="/article/1727856258/" target="_blank">springboot面试题</a>
         <br>
         <span class="suffix-box-title">作者签名：</span>0 和 1 是我的语言，代码世界是我的乐园。
         <br>
@@ -131,16 +122,17 @@
                     <div class="tag">
                         标签：
                         
-                            <a href="/tag/java/">java</a>
-                        
-                            <a href="/tag/%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">并发编程</a>
+                            <a href="/tag/springboot/">springboot</a>
                         
                     </div>
                 
                 <div class="article-prev-next">
                     
+                        <a href="/article/2356986082/" class="prev-prefix">« </a> 上一篇：    <a href="/article/2356986082/" title="发布于 2023-11-15 04:05">JFinal学习笔记</a>
+                        <br>
                     
-                        <a href="/article/1765423620/" class="next-prefix">» </a> 下一篇：    <a href="/article/1765423620/" title="发布于 2023-09-17 03:32">第二代hysteria节点搭建教程</a>
+                    
+                        <a href="/article/690732574/" class="next-prefix">» </a> 下一篇：    <a href="/article/690732574/" title="发布于 2023-10-03 08:47">今日面试题二</a>
                     
                 </div>
             </div>
