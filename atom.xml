@@ -6,7 +6,7 @@
   <link href="https://www.coldeyes.link/atom.xml" rel="self"/>
   
   <link href="https://www.coldeyes.link/"/>
-  <updated>2023-12-24T02:21:09.475Z</updated>
+  <updated>2023-12-24T02:53:11.173Z</updated>
   <id>https://www.coldeyes.link/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>test</title>
+    <link href="https://www.coldeyes.link/article/3632233996/"/>
+    <id>https://www.coldeyes.link/article/3632233996/</id>
+    <published>2023-12-24T02:51:00.000Z</published>
+    <updated>2023-12-24T02:53:11.173Z</updated>
+    
+    <content type="html"><![CDATA[<p>sdfsdfsd</p><p>asd<br>f<br>sdf<br>s<br>df<br>sd<br>fs<br>df<br>sdfsdfsdfsdf</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;sdfsdfsd&lt;/p&gt;
+&lt;p&gt;asd&lt;br&gt;
+f&lt;br&gt;
+sdf&lt;br&gt;
+s&lt;br&gt;
+df&lt;br&gt;
+sd&lt;br&gt;
+fs&lt;br&gt;
+df&lt;br&gt;
+sdfsdfsdfsdf&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+    <category term="面试题" scheme="https://www.coldeyes.link/tag/%E9%9D%A2%E8%AF%95%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>今日面试题</title>
@@ -213,27 +245,6 @@ abbrlink: 313233591&lt;</summary>
     
     
     <category term="linux" scheme="https://www.coldeyes.link/tag/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>第2课-说和写英文的时候，如何避免犯时态错误—年轻人的技能学习神器~</title>
-    <link href="https://www.coldeyes.link/article/2935481740/"/>
-    <id>https://www.coldeyes.link/article/2935481740/</id>
-    <published>2023-08-02T03:21:04.000Z</published>
-    <updated>2023-09-26T15:20:17.157Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="第二部分，如何攻破英语学习大难点-时态">第二部分，如何攻破英语学习大难点 - 时态</h2><p>学习时态的难点及原因</p><blockquote><p>汉语和英语的语言结构有本质的不同</p><p>英语中的谓语动词，会随着时间和状态，发生相应的变化。</p></blockquote><p>时态的本质是什么?</p><blockquote><p>时态 = “时间” 和 “状态” = tense and aspect</p><p>一般来说，时间分为三时</p><p>She walks to school.  现在时</p><p>She walked to school. 过去时</p><p>She will walk to school. 将来时</p></blockquote><p>谓语动词的状态分为四种</p><blockquote><p>一般(simple): 强调动作发生的时间，而非状态。</p><p>比如说 I play basketball. 我打篮球。</p><p>进行(continuous): 强调动作的过程(描绘，生动性)</p><p>比如说 I am playing basketball. 我正在打篮球。</p><p>完成(perfect): 强调动作的结果(逻辑推导性)</p><p>比如说 I have played basketball. 我打完篮球了。</p><p>完成进行(perfect continuous): 强调动作的结果和过程</p><p>比如说 I have been playing basketball. 我一直都有打篮球。</p></blockquote><p>进行: be + 现在分词(be按照3时及主语人称变化)</p><p>完成: have + 过去分词(have按照3时及主语人称变化)</p><p>完成进行: have been + 现在分词(have按照3时及主语人称变化)</p><blockquote><div style="aligin:center; margin:0 auto;">以动词do为例</div><p>现在进行: am/is/are doing    现在完成: have/has done     现在完成进行: have/has been doing</p><p>过去进行: was/were doing    过去完成: had done               过去完成进行: had been doing</p><p>将来进行: will be doing          将来完成: will have done      将来完成进行: will have been doing</p></blockquote><p>16种时态的详细讲解</p><ol><li><p>一般态：强调动作本身</p><blockquote><p>一般现在时分成了三种情况</p><ol><li><p>表示事物现在的情况或状态。(主系表句型)</p><p>I am a doctor.</p><p>我是一个医生</p><p>You are an unrepeatable miracle.</p><p>你是一个无法重复的奇迹</p></li><li><p>表示经常性，习惯性动作(常有时间副词修饰)</p><p>I never get up early on Sundays. I sometimes stay in bed until lunch time.</p><p>星期天我是从来不早起的，有时我要一直躺到吃午饭的时候。</p><p>Winners often seek opportunity when losers want security.</p><p>失败者寻求安全的时候，成功者寻求机遇</p><p>Do you always get up so late? It’s one o’clock!</p><p>你总是起得这么晚吗? 现在已经1点钟了！</p><p>注: 一般现在时常使用表示频率的副词，如never, often, always</p></li><li><p>表示客观真理，格言</p><p>Time flies.</p><p>时光飞逝。</p><p>The early bird catches the worm.</p><p>早起的鸟儿有虫吃。</p><p>Failure is the mother of success.</p><p>失败是成功之母。</p></li></ol><p>一般过去时: 表示过去的动作，习惯，事实。</p><ol><li><p>Last Sunday I got up very late. I looked out of the window. It was dark outside.</p><p>在上个星期天，我起得很晚。我望望窗外，外面一片昏暗。</p></li><li><p>Last summer. I went to Italy.</p><p>去年夏天，我去了意大利。</p></li><li><p>Colubus discovered Amemrica in 1742.</p><p>哥伦布于1742年发现了美洲。</p><p>注：一般过去时常使用过去具体时间得副词，如yesterday, last week, two year ago, in 1998…</p></li></ol><p>一般将来时主要有两种情况</p><ol><li><p>表示将来发生的动作或状态，或者倾向。(will译为“将要”)</p><p>He will soon visit Darwin. From there, he will fly to Perth.</p><p>他不久还将到达达尔文去，从那里，他再飞往柏斯。</p><p>People will run into problems in their lives.</p><p>人们在生活中总会遇到问题。</p><p>A small leak will sink a great ship.</p><p>小裂缝可以沉大船。(千里之堤，溃于蚁穴)。</p></li><li><p>be going to + 动词原形 也可以表示将来时，但多表示&quot;计划&quot;，故其主语多是&quot;人&quot;。</p><p>will 表示&quot;意愿&quot;时，主语是&quot;人&quot;。但也可以表示&quot;预测&quot;，主语为&quot;物&quot;</p><p>Debbie Hart is going to swim across the English Channel tomorrow.</p><p>黛比.哈特准备明天横渡英吉利海峡。</p><p>She is going to she out from the French coast at five o’clock in the morning.</p><p>她打算早上5点钟从法国海岸出发。</p><p>Mr. Thompson is going to sell it because it is hunted.</p><p>汤普森先生之所以想卖它，是因为那里常闹鬼。</p><p>be about to + 动词原形 即将…</p><p>He is about to leave for Shenyang.</p><p>他将要离开去沈阳。</p></li></ol><p>课后练习:</p><ol><li><p>这家便利店全天24小时营业。</p><p>This convenience store is open 24 hours a day.</p></li><li><p>我爷爷每天早上都在公园里散步。</p><p>My grandfather takes a walk in the park every morning.</p></li><li><p>昨天我很无聊，便跟着几个朋友看电影去了。</p><p>I felt bored yesterday, so I went to the movies with several friends.</p></li><li><p>他明天将要去纽约。</p><p>He will go to New York tomorrow.</p></li><li><p>看！那艘船快要沉没了。(be about to)</p><p>Look! The boat is about to shink.</p></li><li><p>我们马上就要吃午餐了。</p><p>We are going to have lunch soon.</p></li><li><p>太阳东升西落。</p><p>The sun rises int the east and sets in the west.</p></li><li><p>我每周去两次健身房。</p><p>I go to gym twice a week.</p></li><li><p>我昨天早上在图书馆看到他。</p><p>I saw him in the livrary yesterday morning.</p></li><li><p>我准备学习计算机科学。</p><p>I am going to learn the computer science.</p></li></ol></blockquote></li><li><p>进行态: 强调动作的过程</p><blockquote><p>现在进行时</p><ol><li><p>表示现在正在做的动作，此时be动词译为&quot;正在&quot;</p><p>He is playing basketball.</p><p>他正在打篮球。</p><p>It’s raining heavily now.</p><p>现在正在下大雨。</p><p>主系表句型在口语中通常用一般现在时，但如果要强调此时的状态，可以用现在进行时。</p><p>You are very rude! -&gt; You are being very rude!</p><p>你太粗鲁了！（你现在的行为粗鲁，而不是你这个人粗鲁）</p></li><li><p>表示即将发生的动作（通常是表示&quot;位移&quot;短暂动词 come, go, arrive, leave, start, begin, return, die, take），此时be动词译为&quot;即将&quot;</p><p>&quot;A new play is coming to’The Globe’soon,&quot;I said.“Will you be seeing it?”</p><p>&quot;一出新剧要来’环球剧场’上演了，&quot;我说，“您去看吗?”</p><p>‘We are going back now,’ said the conductor.</p><p>&quot;我们现在要返回去,&quot;售票员说。</p></li></ol><p>过去进行时</p><ol><li><p>表示过去某时正在做的事情。</p><p>A man was lying in the box during the flight.</p><p>那个航班上，有一个人正躺在箱子里。</p><p>I was having dinner at a restaurant when Tony Steele came in.</p><p>我正在一家饭馆吃饭，托尼.斯蒂尔走了过来。</p></li></ol><p>将来进行时</p><ol><li><p>表示将来某时将进行的动作。</p><p>They will be arriving here tomorrow.</p><p>他们明天就要到达此地。</p><p>Tomorrow evening they will be singing at the Workers’ Club.</p><p>明晚他们将从工人俱乐部演出。</p><p>The Greenwood Boys will be staying for five days.</p><p>&quot;绿林少年&quot;准备在此逗留5天。</p><p>They will be trying to keep order.</p><p>他们将设法维持秩序。</p><p>The shuttle Endeavour will be taking the astronauts to the Hubble.</p><p>&quot;奋进&quot;号航天飞机将把宇航员送上哈勃。</p></li></ol><p>进行态，其实就是一般态的生动模式。任何一个进行态的句子，都可以改成一般态。</p><p>一般态却不一定能改成进行态，比如动词是延续动词才能改。</p><p>I looked out of the window 可以改成 I was looking out of the window. (look是延续的)</p><p>I never get up early on Sundays. 却不能改成 I was never getting up early up early on Sundays. 因为 get up是短暂的。</p><p>造句练习:</p><ol><li><p>你在桌上下面做什么?</p><p>What are you doing under the table?</p></li><li><p>我正梦见你时，电话铃响了。(dream about)</p><p>I was dreaming about you when the telephone rang.</p></li><li><p>明天早上这个时候，我爸爸将正在修剪草坪。(mow the lawn)</p><p>My dad will be mowing the lawn at this time tomorrow morning.</p></li><li><p>我女儿正在学习，所以你最好别去烦她。</p><p>My daughter is studying, so you’d better not bother her.</p></li><li><p>明年这个时候我将正在美国念书。</p><p>I’ll be studying in the United States at this time next year.</p></li></ol></blockquote></li><li><p>完成态: 强调动作的结果</p><blockquote><p>现在完成时</p><ol><li><p>表示到现在为止已经完成的动作(发生时间不明)</p><p>I have just received a letter from my brother, Tim.</p><p>我刚刚收到弟弟蒂姆的来信。</p><p>He has just bought an Australian car and has gone to Alice Springs, a small town in the centre of Australia.</p><p>他刚买了一辆澳大利亚小汽车，现在去了澳大利亚中部的小镇艾利斯斯普林斯。</p><p>Since then, he has developed another bad habit.</p><p>从那以后，它养成了另外一种坏习惯。</p><p>He has gone to Shanghai.</p><p>他去了上海(言外之意:他不在说话现场)</p></li><li><p>如果时延续性动词，表示持续到现在的动作(或状态)。(注意: be动词时刻延续的)</p><p>She has lived here for 10 years.</p><p>她住在这里10年了。</p><p>He has been there for six months.</p><p>他在那儿已经住了6个月了。</p><p>I have been to the Great Wall.</p><p>我去过长城。</p></li></ol><p>现在完成时常用时间副词</p><ol><li>自从… since + 时间点</li><li>有若干时间之久… for + 时间段</li><li>到目前为止… so far/up to now</li><li>最近… recently/lately</li><li>一次/两次/几次/多次… once/twice/a few times/many times</li><li>过去若干年/月/日以来… over/during/for + the last/past + 数字 + years/months/days</li></ol><p>现在完成时常用时间副词例句</p><ol><li><p>Since then, Captain Fawcett has flown passengers to many unusual places.</p><p>从那时开始，福塞特机长已经载送乘客到过许多不寻常的地方。</p></li><li><p>Mr. Hart has trained his daughter for years.</p><p>哈特先生训练他的女儿已经多年了。</p></li><li><p>But so far, the public has expressed its gratitude to the students in letters to the Press.</p><p>但到目前为止，公众已经向新闻界写信表达他们对学生们的感激之情了。</p></li><li><p>Up to now, Mr. Scott has sent a great many requests for spare parts and other urgent messages from one garage to the other.</p><p>到目前为止，斯科特先生从一个汽车修理部向另一个发送了大量索取备件的信件和其他紧急函件。</p></li></ol><p>过去完成时</p><ol><li><p>表示截至过去某时为止所完成的动作或经验。(过去完成时不能单独存在，要与另一使用一般过去时的句子或者表示过去的副词短语连用)。(had译为&quot;已经&quot;或&quot;曾经&quot;)</p><p>My old friend, Harrison, had lived in the Mediterranean for many years before he returned to England.</p><p>我的老朋友哈里森在回到英国以前曾多年居住在地中海地区。</p><p>A short time before, great trees had covered the countryside for miles around.</p><p>就在不久之前，参天大树还覆盖着方圆数英里的土地。</p><p>By then, however, in many places the grass had already taken root.</p><p>然而到那时，很多地方的草已经生了根。</p></li></ol><p>将来完成时</p><ol><li><p>表示到将来某时为止所完成或仍然继续的动作或经验等。(常与介词by构成的时间状语连用，表示&quot;到…的时候&quot;)</p><p>Workers will have completed the new roads by the end of this year.</p><p>工人们将在今年年底前把新路铺好。</p><p>By the end of next year, they will have finished work on the new stadium.</p><p>到明年年底，他们将把新体育场建成。</p></li></ol><p>造句练习:</p><ol><li><p>彼得去过香港很多次。</p><p>Peter has been to Hong Kong many times.</p></li><li><p>进入初中以来，我们对英语很狂热。(be crazy about)</p><p>I have been crazy about English since I entered junior high school.</p></li><li><p>到目前为止，我已经完成这项计划的三分之二。</p><p>So far, I have finished two third of the project.</p></li><li><p>我最近很忙，恐怕要到下周一我才有空。</p><p>I have been very busy recently. I’m afraid that I won’t be free until next Monday.</p></li><li><p>过去5年来，这个好孩子都尽力照顾他生病的母亲。</p><p>Over the past 5 years. the good boy has tried his best to take care of his ill mother.</p></li><li><p>史密斯先生搬到这里之前都已经在加拿大住了20年</p><p>Mr. Smith had lived in Canada for 20 years before he moved here.</p></li><li><p>等我到达车站时，火车已经开走了。</p><p>By the time I got to the station. the train had left.</p></li><li><p>玛丽昨天告诉我她很久以来一直想出国旅游。</p><p>Mary told me yesterday that she had long wanted to travel abroad.</p></li><li><p>我很生气，因为我女朋友又对我爽约了。(stand sb. up)</p><p>I was very angry because my girlfriend had stood me up again.</p></li><li><p>明天这个时候，约翰将已经达到芝加哥了。</p><p>John will have arrived in Chicago by this time tomorrow.</p></li></ol></blockquote></li><li><p>完成进行态: 强调动作的结果和过程</p><blockquote><p>现在完成进行时</p><ol><li><p>表示一直继续到现在，且可能继续下去的动作。(通常和表示时间段的副词连用，如for, since, all morning…)</p><p>We have just moved into a new house and I have been working hard all morning.</p><p>我们刚刚搬进一所新房子，我辛辛苦苦地干了整整一个上午。</p><p>If you haven’t discovered your dream, probably you’ve been missing too much.</p><p>如果你还没有发现梦想，或许一直以来你失去的太多了。</p></li></ol><p>过去完成进行时</p><ol><li><p>表示一直继续到过去某时，而当时仍然在继续的动作。(过去完成进行时的句中必须有表示过去的时间状语)</p><p>Firemen had been fighting the forest fire for nearly three weeks before they cold get it under control.</p><p>消防队员们同那场森林大火搏斗了将近3个星期才最后把火势控制住。</p><p>The planes had been planting seed for nearly a month when it began to rain.</p><p>飞机撒播近一个月后，开始下起雨来。</p><p>Bleriot had been makong planes since 1905 and this was his latest model.</p><p>布莱里奥从1905年起便开始研制飞机，这架飞机是他制作的最新型号。</p></li></ol><p>将来完成进行时</p><ol><li><p>一直继续到将来某时，且可能继续下去的动作。</p><p>The day before his retirement, Mr. Page will have been teaching for a total of forty years.</p><p>佩奇先生退休前的前一天正好是他执教满40年的日子。</p><p>By the time you come back tonight, I will have been sleeping for five hours.</p><p>等你今晚回来时，我已经持续睡了5个小时了。</p></li></ol><p>造句练习:</p><ol><li><p>约翰自去年起就一直学日语。他希望去日本留学。</p><p>John has been learning Japanese since last year. He expects to study in Japan in the future.</p></li><li><p>Lulu的车子抛锚时，她已经持续开了8个小时了。</p><p>By the time her car broke down, Lulu had been driving for 8 hours.</p></li><li><p>到今年年底，王老师教英语将有10年了。</p><p>Mr. Wang will have been teaching English for 10 years by the end of this year.</p></li></ol></blockquote></li><li><p>过去将来时</p><blockquote><p>过去将来时通常多用于叙述性故事中，或间接引语中</p><ol><li><p>A few hours earlier, someone had told the police that thieves would try to steal the diamonds.</p><p>数小时之前，有人向警方报告，说有人企图偷走这些钻石。(一般态)</p></li><li><p>Then he smiled and told me I would receive an extra thousand pounds a year!</p><p>然后他微笑了一下告诉我说，我每年将得到1,000英镑的额外收入。(一般态)</p></li><li><p>He said that it would be possible to build a platform in the centre of the Channel.</p><p>他说，可以在隧道中央建造一座平台。(一般态)</p></li><li><p>She said she would be setting off on the 10 o’clock train.</p><p>她说她将乘10点钟的火车走。(进行态)</p></li><li><p>I guessed that Helen would have told her something.</p><p>我猜海伦会告诉她一些情况的。(完成态)</p></li><li><p>He told me that by the end of the year he would have been living there for thirty years.</p><p>他告诉我到今年末他已经住在那儿30年了。(完成进行态)</p></li></ol><p>造句练习:</p><ol><li><p>在信中她说她明年将到英国来。</p><p>In her letter, she said that she would come to England next year.</p></li><li><p>他问我明天上午10点我将干什么。</p><p>He asked me what I should be doing at 10 a.m. the next day.</p></li><li><p>他告诉我们他会在8点以前干完工作。</p><p>He told us he would have finished the work by 8 o’clock.</p></li></ol></blockquote></li></ol>]]></content>
-    
-    
-    <summary type="html">第2课-说和写英文的时候，如何避免犯时态错误—年轻人的技能学习神器~</summary>
-    
-    
-    
-    <category term="20小时快速掌握英语核心秘法" scheme="https://www.coldeyes.link/category/20%E5%B0%8F%E6%97%B6%E5%BF%AB%E9%80%9F%E6%8E%8C%E6%8F%A1%E8%8B%B1%E8%AF%AD%E6%A0%B8%E5%BF%83%E7%A7%98%E6%B3%95/"/>
-    
-    
-    <category term="英语" scheme="https://www.coldeyes.link/tag/%E8%8B%B1%E8%AF%AD/"/>
     
   </entry>
   
